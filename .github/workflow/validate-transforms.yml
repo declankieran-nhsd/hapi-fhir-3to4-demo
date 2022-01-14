@@ -1,0 +1,38 @@
+name: Validate Transforms
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Download validator_cli
+        run: wget https://github.com/hapifhir/org.hl7.fhir.core/releases/latest/download/validator_cli.jar
+
+      - name: Setup java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+          cache: 'pip'
+      - run: pip install -r tests/requirements.txt;
+
+      - name: Unpack FHIR xver package
+        run: |
+          mkdir -p ~/.fhir/package-client; \
+          mkdir -p ~/.fhir/packages/hl7.fhir.xver.r4#1.2.0; \
+          touch ~/.fhir/package-client/packages.fhir.org-hl7.fhir.xver.r4-1.2.0.tgz; \
+          tar -zxf hl7.fhir.xver.r4#1.2.0-mod/package.tgz --directory ~/.fhir/packages/hl7.fhir.xver.r4#1.2.0
+
+      - name: Run tests
+        run: cd tests; pytest validate_transforms.py -vv
