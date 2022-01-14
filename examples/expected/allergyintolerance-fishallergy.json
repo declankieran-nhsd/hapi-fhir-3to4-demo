@@ -15,6 +15,5 @@
   },
   "recorder": {
     "reference": "Practitioner/example"
-  },
-  "test": "a failure"
+  }
 }
