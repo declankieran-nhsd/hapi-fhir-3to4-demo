@@ -1,0 +1,10 @@
+{
+  "resourceType": "SearchParameter",
+  "url": "http://hl7.org/fhir/SearchParameter/elementdefinition-11179-DataElement-objectClass",
+  "name": "objectClass",
+  "description": "Matches on the 11179-objectClass extension value",
+  "code": "objectClass",
+  "type": "token",
+  "xpath": "f:DataElement/f:element/f:mapping/f:extension[@url='http://hl7.org/fhir/StructureDefinition/11179-objectClass'] | f:DataElement/f:element/f:mapping/f:extension[@url='http://hl7.org/fhir/StructureDefinition/11179-objectClass']",
+  "xpathUsage": "normal"
+}

@@ -1,0 +1,9 @@
+{
+  "resourceType": "SearchParameter",
+  "url": "http://hl7.org/fhir/SearchParameter/observation-genetics-Observation-gene-identifier",
+  "name": "gene-identifier",
+  "description": "HGNC gene symbol and identifier",
+  "code": "gene-identifier",
+  "type": "token",
+  "xpathUsage": "normal"
+}

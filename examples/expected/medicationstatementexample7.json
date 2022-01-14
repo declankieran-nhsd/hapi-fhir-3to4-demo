@@ -1,0 +1,21 @@
+{
+  "resourceType": "MedicationStatement",
+  "text": {
+    "status": "generated",
+    "div": "<div>\n      <p>Ventolin inhaler - Will take during seasonal allergy season</p>\n    </div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/3.0/StructureDefinition/extension-MedicationStatement.status",
+      "valueCode": "active"
+    }
+  ],
+  "dateAsserted": "2015-02-22",
+  "informationSource": {
+    "reference": "Patient/example"
+  },
+  "effectiveDateTime": "2015-05-23",
+  "medicationReference": {
+    "reference": "Medication/MedicationExample12"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "resourceType": "CoverageEligibilityResponse",
+  "text": {
+    "status": "generated",
+    "div": "<div>A human-readable rendering of the EligibilityResponse.</div>"
+  },
+  "identifier": [
+    {
+      "system": "http://www.BenefitsInc.com/fhir/eligibilityresponse",
+      "value": "881234"
+    }
+  ],
+  "created": "2014-08-16",
+  "disposition": "Policy is currently in-force."
+}

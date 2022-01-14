@@ -1,0 +1,51 @@
+{
+  "resourceType": "MedicationStatement",
+  "text": {
+    "status": "generated",
+    "div": "<div>\n      <p>Amoxicillin 250mg/5mL - Taking 5mL every three hours</p>\n    </div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/3.0/StructureDefinition/extension-MedicationStatement.status",
+      "valueCode": "active"
+    }
+  ],
+  "dateAsserted": "2014-02-22",
+  "informationSource": {
+    "reference": "Patient/pat1"
+  },
+  "note": [
+    {
+      "text": "Father indicates they miss the occasional dose"
+    }
+  ],
+  "dosage": [
+    {
+      "text": "5ml three times daily",
+      "asNeededBoolean": false,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "260548002",
+            "display": "Oral"
+          }
+        ]
+      },
+      "maxDosePerPeriod": {
+        "numerator": {
+          "value": 3
+        },
+        "denominator": {
+          "value": 1,
+          "system": "http://unitsofmeasure.org",
+          "code": "d"
+        }
+      }
+    }
+  ],
+  "effectiveDateTime": "2014-02-01",
+  "medicationReference": {
+    "reference": "Medication/MedicationExample4"
+  }
+}

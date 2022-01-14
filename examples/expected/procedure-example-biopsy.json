@@ -1,0 +1,46 @@
+{
+  "resourceType": "Procedure",
+  "text": {
+    "status": "generated",
+    "div": "<div>Biopsy of suspected melanoma L) arm</div>"
+  },
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "90105005",
+        "display": "Biopsy of soft tissue of forearm (Procedure)"
+      }
+    ],
+    "text": "Biopsy of suspected melanoma L) arm"
+  },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "performedDateTime": "2014-02-03",
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/example",
+        "display": "Dr Bert Biopser"
+      }
+    }
+  ],
+  "bodySite": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "368225008",
+          "display": "Entire Left Forearm"
+        }
+      ],
+      "text": "Left forearm"
+    }
+  ],
+  "followUp": [
+    {
+      "text": "Review in clinic"
+    }
+  ]
+}

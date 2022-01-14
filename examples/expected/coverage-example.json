@@ -1,0 +1,18 @@
+{
+  "resourceType": "Coverage",
+  "text": {
+    "status": "generated",
+    "div": "<div>A human-readable rendering of the coverage</div>"
+  },
+  "identifier": [
+    {
+      "system": "http://benefitsinc.com/certificate",
+      "value": "12345"
+    }
+  ],
+  "dependent": "1",
+  "period": {
+    "start": "2011-05-23",
+    "end": "2012-05-23"
+  }
+}

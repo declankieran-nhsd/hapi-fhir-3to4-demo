@@ -1,0 +1,16 @@
+{
+  "resourceType": "OperationOutcome",
+  "text": {
+    "status": "additional",
+    "div": "<div>\n      <p>All OK</p>\n    </div>"
+  },
+  "issue": [
+    {
+      "severity": "information",
+      "code": "informational",
+      "details": {
+        "text": "All OK"
+      }
+    }
+  ]
+}

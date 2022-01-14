@@ -1,0 +1,18 @@
+{
+  "resourceType": "Library",
+  "text": {
+    "status": "generated",
+    "div": "<div>Exclusive Breastfeeding CQM Logic</div>"
+  },
+  "dataRequirement": [
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSetString": "Single Live Birth"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "resourceType": "Procedure",
+  "text": {
+    "status": "generated",
+    "div": "<div>Routine Appendectomy</div>"
+  },
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "80146002",
+        "display": "Appendectomy (Procedure)"
+      }
+    ],
+    "text": "Appendectomy"
+  },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "performedDateTime": "2013-04-05",
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/example",
+        "display": "Dr Cecil Surgeon"
+      }
+    }
+  ],
+  "followUp": [
+    {
+      "text": "ROS 5 days  - 2013-04-10"
+    }
+  ]
+}

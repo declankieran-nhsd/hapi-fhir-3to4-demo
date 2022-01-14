@@ -1,0 +1,17 @@
+{
+  "resourceType": "Practitioner",
+  "text": {
+    "status": "generated",
+    "div": "<div>\n      <p>Harold Hippocrates, MD</p>\n    </div>"
+  },
+  "name": [
+    {
+      "given": [
+        "Harold"
+      ],
+      "suffix": [
+        "MD"
+      ]
+    }
+  ]
+}

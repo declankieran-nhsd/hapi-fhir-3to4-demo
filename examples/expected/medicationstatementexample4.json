@@ -1,0 +1,61 @@
+{
+  "resourceType": "MedicationStatement",
+  "text": {
+    "status": "generated",
+    "div": "<div>\n      <p>Amoxicillin 250mg capsule - one capsule three times daily</p>\n    </div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/3.0/StructureDefinition/extension-MedicationStatement.status",
+      "valueCode": "completed"
+    }
+  ],
+  "dateAsserted": "2015-02-22",
+  "informationSource": {
+    "reference": "Patient/example"
+  },
+  "note": [
+    {
+      "text": "Patient indicates they miss the occasional dose"
+    }
+  ],
+  "dosage": [
+    {
+      "text": "one capsule three times daily",
+      "timing": {
+        "repeat": {
+          "frequency": 3,
+          "period": 1,
+          "periodUnit": "d"
+        }
+      },
+      "asNeededBoolean": false,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "260548002",
+            "display": "Oral"
+          }
+        ]
+      },
+      "maxDosePerPeriod": {
+        "numerator": {
+          "value": 3,
+          "unit": "capsules",
+          "system": "http://snomed.info/sct",
+          "code": "385055001"
+        },
+        "denominator": {
+          "value": 1,
+          "system": "http://unitsofmeasure.org",
+          "code": "d"
+        }
+      }
+    }
+  ],
+  "effectiveDateTime": "2014-01-23",
+  "medicationReference": {
+    "reference": "Medication/MedicationExample6"
+  }
+}

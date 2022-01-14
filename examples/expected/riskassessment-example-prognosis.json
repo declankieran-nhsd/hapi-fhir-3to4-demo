@@ -1,0 +1,24 @@
+{
+  "resourceType": "RiskAssessment",
+  "text": {
+    "status": "additional",
+    "div": "<div>\n      <p>Moderate risk of permanent weakness of the left arm, but otherwise no permanent disability</p>\n    </div>"
+  },
+  "condition": {
+    "reference": "Condition/stroke",
+    "display": "Ischemic Stroke"
+  },
+  "prediction": [
+    {
+      "outcome": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "249943000:363698007=72098002,260868000=6934004"
+          }
+        ],
+        "text": "permanent weakness of the left arm"
+      }
+    }
+  ]
+}

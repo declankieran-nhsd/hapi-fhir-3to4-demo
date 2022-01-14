@@ -1,0 +1,7 @@
+{
+  "resourceType": "Contract",
+  "text": {
+    "status": "generated",
+    "div": "<div>A human-readable rendering of the contract</div>"
+  }
+}

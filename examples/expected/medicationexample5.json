@@ -1,0 +1,37 @@
+{
+  "resourceType": "Medication",
+  "text": {
+    "status": "generated",
+    "div": "<div>Didrocal</div>"
+  },
+  "code": {
+    "coding": [
+      {
+        "system": "http://hc-sc.gc.ca",
+        "code": "02176017",
+        "display": "Didrocal"
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "hhttp://hl7.org/fhir/3.0/StructureDefinition/extension-Medication.isBrand",
+      "valueBoolean": true
+    },
+    {
+      "url": "http://hl7.org/fhir/3.0/StructureDefinition/extension-Medication.package.container",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "398124009",
+            "display": "drug container"
+          }
+        ]
+      }
+    }
+  ],
+  "manufacturer": {
+    "reference": "http://http://www.actavis.ca/default.htm/fhirresource/1"
+  }
+}

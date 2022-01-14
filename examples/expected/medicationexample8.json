@@ -1,0 +1,16 @@
+{
+  "resourceType": "Medication",
+  "text": {
+    "status": "generated",
+    "div": "<div>Hydrocortisone 1%, Salicyclic Acid 5% in Glaxal Base</div>"
+  },
+  "code": {
+    "text": "Hydrocortisone 1%, Salicyclic Acid 5% in Glaxal Base"
+  },
+  "extension": [
+    {
+      "url": "hhttp://hl7.org/fhir/3.0/StructureDefinition/extension-Medication.isBrand",
+      "valueBoolean": false
+    }
+  ]
+}

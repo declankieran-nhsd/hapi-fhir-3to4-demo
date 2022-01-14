@@ -1,0 +1,13 @@
+{
+  "resourceType": "DeviceUseStatement",
+  "text": {
+    "status": "generated",
+    "div": "<div>To be filled out at a later time</div>"
+  },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "device": {
+    "reference": "Device/example"
+  }
+}

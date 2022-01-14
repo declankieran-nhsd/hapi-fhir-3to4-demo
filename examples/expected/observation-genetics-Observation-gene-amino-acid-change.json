@@ -1,0 +1,9 @@
+{
+  "resourceType": "SearchParameter",
+  "url": "http://hl7.org/fhir/SearchParameter/observation-genetics-Observation-gene-amino-acid-change",
+  "name": "gene-amino-acid-change",
+  "description": "HGNC gene symbol and HGVS Protein change",
+  "code": "gene-amino-acid-change",
+  "type": "string",
+  "xpathUsage": "normal"
+}

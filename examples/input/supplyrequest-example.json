@@ -1,0 +1,10 @@
+{
+  "resourceType": "SupplyRequest",
+  "fhir_comments": [
+    "  insert contents here  "
+  ],
+  "text": {
+    "status": "generated",
+    "div": "<div>[Put rendering here]</div>"
+  }
+}

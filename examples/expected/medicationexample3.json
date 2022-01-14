@@ -1,0 +1,22 @@
+{
+  "resourceType": "Medication",
+  "text": {
+    "status": "generated",
+    "div": "<div>Amox S 250 Sus 250mg/5ml</div>"
+  },
+  "code": {
+    "coding": [
+      {
+        "system": "http://hc-sc.gc.ca",
+        "code": "00885916",
+        "display": "Amox S 250 Sus 250mg/5ml"
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "hhttp://hl7.org/fhir/3.0/StructureDefinition/extension-Medication.isBrand",
+      "valueBoolean": true
+    }
+  ]
+}

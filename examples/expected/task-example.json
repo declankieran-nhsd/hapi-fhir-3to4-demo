@@ -1,0 +1,12 @@
+{
+  "resourceType": "Task",
+  "text": {
+    "status": "generated",
+    "div": "<div><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p><p><b>text</b>: </p><p><b>type</b>: Refill Request <span>(Details )</span></p><p><b>status</b>: draft</p><p><b>subject</b>: <a>Medication/123</a></p><p><b>created</b>: 10/03/2016 10:39:32 PM</p><p><b>lastModified</b>: 10/03/2016 10:39:32 PM</p><p><b>creator</b>: <a>Patient/Keith</a></p><p><b>owner</b>: <a>Practitioner/MyDoc</a></p></div>"
+  },
+  "status": "draft",
+  "lastModified": "2016-03-10T22:39:32-04:00",
+  "owner": {
+    "reference": "Practitioner/MyDoc"
+  }
+}

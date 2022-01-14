@@ -1,0 +1,10 @@
+{
+  "resourceType": "SearchParameter",
+  "url": "http://hl7.org/fhir/SearchParameter/us-core-Patient-race",
+  "name": "race",
+  "description": "Returns patients with a race extension matching the specified code.",
+  "code": "race",
+  "type": "token",
+  "xpath": "f:Patient/f:extension[@url='http://hl7.org/fhir/StructureDefinition/us-core-race'] | f:Patient/f:extension[@url='http://hl7.org/fhir/StructureDefinition/us-core-race']",
+  "xpathUsage": "normal"
+}

@@ -1,0 +1,10 @@
+{
+  "resourceType": "SearchParameter",
+  "url": "http://hl7.org/fhir/SearchParameter/us-core-Patient-ethnicity",
+  "name": "ethnicity",
+  "description": "Returns patients with an ethnicity extension matching the specified code.",
+  "code": "ethnicity",
+  "type": "token",
+  "xpath": "f:Patient/f:extension[@url='http://hl7.org/fhir/StructureDefinition/us-core-ethnicity'] | f:Patient/f:extension[@url='http://hl7.org/fhir/StructureDefinition/us-core-ethnicity']",
+  "xpathUsage": "normal"
+}

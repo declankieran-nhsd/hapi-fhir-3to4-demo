@@ -1,0 +1,35 @@
+{
+  "resourceType": "StructureMap",
+  "text": {
+    "status": "generated",
+    "div": "<div>[Put rendering here]</div>"
+  },
+  "url": "http://hl7.org/fhir/StructureMap/example",
+  "name": "Example Map",
+  "status": "draft",
+  "group": [
+    {
+      "name": "Examples",
+      "input": [
+        {
+          "name": "test",
+          "mode": "source"
+        }
+      ],
+      "rule": [
+        {
+          "name": "rule1",
+          "source": [
+            {
+              "required": true,
+              "context": "test",
+              "contextType": "variable",
+              "element": "test",
+              "variable": "t"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

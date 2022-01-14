@@ -1,0 +1,18 @@
+{
+  "resourceType": "Library",
+  "text": {
+    "status": "generated",
+    "div": "<div>Chlamydia Screening Common Library</div>"
+  },
+  "dataRequirement": [
+    {
+      "type": "Condition",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSetString": "Other Female Reproductive Conditions"
+        }
+      ]
+    }
+  ]
+}

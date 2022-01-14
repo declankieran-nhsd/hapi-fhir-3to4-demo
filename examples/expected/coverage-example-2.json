@@ -1,0 +1,18 @@
+{
+  "resourceType": "Coverage",
+  "text": {
+    "status": "generated",
+    "div": "<div>A human-readable rendering of the coverage</div>"
+  },
+  "identifier": [
+    {
+      "system": "http://xyz.com/codes/identifier",
+      "value": "AB9876"
+    }
+  ],
+  "dependent": "1",
+  "period": {
+    "start": "2011-03-17",
+    "end": "2012-03-17"
+  }
+}

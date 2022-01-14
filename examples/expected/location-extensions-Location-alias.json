@@ -1,0 +1,10 @@
+{
+  "resourceType": "SearchParameter",
+  "url": "http://hl7.org/fhir/SearchParameter/location-extensions-Location-alias",
+  "name": "alias",
+  "description": "Include Locations that contain the provided alias",
+  "code": "alias",
+  "type": "string",
+  "xpath": "f:Location/f:extension[@url='http://hl7.org/fhir/StructureDefinition/location-alias'] | /f:#alias",
+  "xpathUsage": "normal"
+}

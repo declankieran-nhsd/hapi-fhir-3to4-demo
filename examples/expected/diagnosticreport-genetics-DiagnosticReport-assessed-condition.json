@@ -1,0 +1,9 @@
+{
+  "resourceType": "SearchParameter",
+  "url": "http://hl7.org/fhir/SearchParameter/diagnosticreport-genetics-DiagnosticReport-assessed-condition",
+  "name": "assessed-condition",
+  "description": "Condition assessed by genetic test",
+  "code": "assessed-condition",
+  "type": "reference",
+  "xpathUsage": "normal"
+}

@@ -1,0 +1,16 @@
+{
+  "resourceType": "AppointmentResponse",
+  "text": {
+    "status": "generated",
+    "div": "<div>Accept Brian MRI results discussion</div>"
+  },
+  "appointment": {
+    "reference": "Appointment/example",
+    "display": "Brian MRI results discussion"
+  },
+  "actor": {
+    "reference": "Patient/example",
+    "display": "Peter James Chalmers"
+  },
+  "participantStatus": "accepted"
+}

@@ -1,0 +1,25 @@
+{
+  "resourceType": "Medication",
+  "text": {
+    "status": "generated",
+    "div": "<div>3 ML Insulin, Aspart, Human 100 UNT/ML Prefilled Syringe [NovoLog]</div>"
+  },
+  "code": {
+    "coding": [
+      {
+        "system": "http://purl.bioontology.org/ontology/RXNORM/847265",
+        "code": "847265",
+        "display": "3 ML Insulin, Aspart, Human 100 UNT/ML Prefilled Syringe [NovoLog]"
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "hhttp://hl7.org/fhir/3.0/StructureDefinition/extension-Medication.isBrand",
+      "valueBoolean": true
+    }
+  ],
+  "manufacturer": {
+    "reference": "http://www.novonordisk-us.com/fhirresource/1"
+  }
+}

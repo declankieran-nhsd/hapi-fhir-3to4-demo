@@ -1,0 +1,56 @@
+{
+  "resourceType": "Medication",
+  "text": {
+    "status": "generated",
+    "div": "<div>Amoxicillin 250mg/5ml Powder for Suspension</div>"
+  },
+  "code": {
+    "coding": [
+      {
+        "system": "http://www.fda.gov/Drugs/InformationOnDrugs/ucm142438.htm",
+        "code": "54569-2931",
+        "display": "Amoxicillin Powder, for Suspension 250mg/5ml"
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "hhttp://hl7.org/fhir/3.0/StructureDefinition/extension-Medication.isBrand",
+      "valueBoolean": true
+    },
+    {
+      "url": "http://hl7.org/fhir/3.0/StructureDefinition/extension-Medication.package.container",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "419672006",
+            "display": "Bottle - unit of product usage"
+          }
+        ]
+      }
+    },
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/3.0/StructureDefinition/extension-Medication.package.content",
+          "valueReference": {
+            "reference": "Medication/medexample014"
+          }
+        },
+        {
+          "url": "http://hl7.org/fhir/3.0/StructureDefinition/extension-Medication.package.content.amount",
+          "valueQuantity": {
+            "value": 7.5,
+            "unit": "gm",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "url": "http://hl7.org/fhir/3.0/StructureDefinition/extension-Medication.package.content"
+    }
+  ],
+  "manufacturer": {
+    "reference": "http://www.a-smeds.com/fhirresource/1"
+  }
+}

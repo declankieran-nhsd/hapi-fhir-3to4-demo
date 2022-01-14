@@ -1,0 +1,14 @@
+{
+  "resourceType": "PaymentNotice",
+  "text": {
+    "status": "generated",
+    "div": "<div>A human-readable rendering of the PaymentNotice</div>"
+  },
+  "identifier": [
+    {
+      "system": "http://benefitsinc.com/paymentnotice",
+      "value": "776543"
+    }
+  ],
+  "created": "2014-08-16"
+}
