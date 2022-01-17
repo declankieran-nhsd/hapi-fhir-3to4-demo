@@ -8,12 +8,12 @@ def test_transforms(example):
     shutil.copy("../examples/input/" + example, ".", follow_symlinks=True)
     try:
         process = subprocess.run([
-		        "java",
-		        "-jar",
-	    	    "../validator_cli.jar",
-		        "./" + example,
-		        "-version",
-	    	    "3.0",
+                "java",
+                "-jar",
+                "../validator_cli.jar",
+                "./" + example,
+                "-version",
+                "3.0",
                 "-to-version",
                 "4.0",
                 "-output",
