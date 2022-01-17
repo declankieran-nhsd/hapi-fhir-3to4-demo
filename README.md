@@ -88,7 +88,7 @@ A subset of the STU3 examples available at https://github.com/rbren/fhir-swagger
 
 ```shell
 jq '.resourceType' input/* | sort -u | wc -l
-``
+```
 
 The "id" element has also been removed from all resources as this is not currently handled by the validator_cli.jar.  However, for migration purposes having the "id" transfer over to the new resource is probably not a desirable outcome anyway.
 
