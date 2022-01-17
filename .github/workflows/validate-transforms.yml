@@ -28,6 +28,7 @@ jobs:
       - run: pip install -r tests/requirements.txt;
 
       - name: Unpack FHIR xver package
+        if: "!contains(github.event.head_commit.message, '[skip package mod]')"
         run: |
           mkdir -p ~/.fhir/package-client; \
           mkdir -p ~/.fhir/packages/hl7.fhir.xver.r4#1.2.0; \
