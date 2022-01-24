@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Bundle xmlns="http://hl7.org/fhir">
+  <type value="batch"/>
+  <entry>
+    <request>
+      <method value="GET"/>
+      <url value="/Patient/example"/>
+    </request>
+  </entry>
+  <entry>
+    <request>
+      <method value="GET"/>
+      <url value="/MedicationStatement?patient=example&amp;_list=$current-medications"/>
+    </request>
+  </entry>
+  <entry>
+    <request>
+      <method value="GET"/>
+      <url value="/AllergyIntolernce?patient=example&amp;_list=$current-allergies"/>
+    </request>
+  </entry>
+  <entry>
+    <request>
+      <method value="GET"/>
+      <url value="/Condition?patient=example&amp;_list=$current-problems"/>
+    </request>
+  </entry>
+  <entry>
+    <request>
+      <method value="GET"/>
+      <url value="/MedicationStatement?patient=example&amp;notgiven:not=true"/>
+    </request>
+  </entry>
+</Bundle>

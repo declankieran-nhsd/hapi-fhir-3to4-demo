@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<AllergyIntolerance xmlns="http://hl7.org/fhir">
+  <text>
+    <status value="additional"/><div xmlns="http://www.w3.org/1999/xhtml">
+      <p>allergy is to fresh fish. Tolerates canned fish</p>
+      <p>recordedDate:2015-08-06T00:00:00-06:00</p>
+      <p>substance:Fish - dietary (substance)</p>
+    </div>
+  </text>
+  <identifier>
+    <system value="http://acme.com/ids/patients/risks"/>
+    <value value="49476535"/>
+  </identifier>
+  <clinicalStatus>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"/>
+      <code value="active"/>
+    </coding>
+  </clinicalStatus>
+  <verificationStatus>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"/>
+      <code value="confirmed"/>
+    </coding>
+  </verificationStatus>
+  <category value="food"/>
+  <code>
+    <coding>
+      <system value="http://snomed.info/sct"/>
+      <code value="227037002"/>
+      <display value="Fish - dietary (substance)"/>
+    </coding>
+    <text value="Allergic to fresh fish. Tolerates canned fish"/>
+  </code>
+  <patient>
+    <reference value="Patient/example"/>
+  </patient>
+  <recordedDate value="2015-08-06T15:37:31-06:00"/>
+  <recorder>
+    <reference value="Practitioner/example"/>
+  </recorder>
+</AllergyIntolerance>

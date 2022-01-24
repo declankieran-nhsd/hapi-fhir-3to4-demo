@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Device xmlns="http://hl7.org/fhir">
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example-udi3</p><p><b>identifier</b>: Serial Number = XYZ456789012345678</p><h3>Udis</h3><table><tr><td>-</td><td><b>Name</b></td><td><b>Jurisdiction</b></td><td><b>CarrierHRF</b></td><td><b>Issuer</b></td><td><b>EntryType</b></td></tr><tr><td>*</td><td>FHIR® Ulltra Implantable</td><td><a>http://hl7.org/fhir/NamingSystem/fda-udi</a></td><td>+H123PARTNO1234567890120/$$420020216LOT123456789012345/SXYZ456789012345678/16D20130202C</td><td><a>http://hl7.org/fhir/NamingSystem/hibcc</a></td><td>manual</td></tr></table><p><b>status</b>: inactive</p><p><b>lotNumber</b>: LOT123456789012345</p><p><b>manufacturer</b>: GlobalMed, Inc</p><p><b>manufactureDate</b>: 02/02/2013</p><p><b>expirationDate</b>: 02/02/2020</p><p><b>model</b>: Ultra Implantable</p><p><b>patient</b>: <a>Patient/example</a></p></div>
+  </text>
+  <identifier>
+    <type>
+      <coding>
+        <system value="http://hl7.org/fhir/identifier-type"/>
+        <code value="SNO"/>
+      </coding>
+    </type>
+    <value value="XYZ456789012345678"/>
+  </identifier>
+  <udiCarrier>
+    <issuer value="http://hl7.org/fhir/NamingSystem/hibcc"/>
+    <jurisdiction value="http://hl7.org/fhir/NamingSystem/fda-udi"/>
+    <carrierHRF value="+H123PARTNO1234567890120/$$420020216LOT123456789012345/SXYZ456789012345678/16D20130202C"/>
+    <entryType value="manual"/>
+  </udiCarrier>
+  <status value="inactive"/>
+  <manufacturer value="GlobalMed, Inc"/>
+  <manufactureDate value="2013-02-02"/>
+  <expirationDate value="2020-02-02"/>
+  <lotNumber value="LOT123456789012345"/>
+  <deviceName>
+    <name value="FHIR® Ulltra Implantable"/>
+    <type value="udi-label-name"/>
+  </deviceName>
+  <modelNumber value="Ultra Implantable"/>
+  <patient>
+    <reference value="Patient/example"/>
+  </patient>
+</Device>

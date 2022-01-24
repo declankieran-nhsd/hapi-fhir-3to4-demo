@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CoverageEligibilityRequest xmlns="http://hl7.org/fhir">
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the EligibilityRequest</div>
+  </text>
+  <identifier>
+    <system value="http://happyvalley.com/elegibilityrequest"/>
+    <value value="52346"/>
+  </identifier>
+  <status value="active"/>
+  <priority>
+    <coding>
+      <code value="normal"/>
+    </coding>
+  </priority>
+  <patient>
+    <reference value="Patient/pat1"/>
+  </patient>
+  <servicedDate value="2014-09-17"/>
+  <created value="2014-08-16"/>
+  <enterer>
+    <identifier>
+      <system value="http://happyvalleyclinic.com/staff"/>
+      <value value="14"/>
+    </identifier>
+  </enterer>
+  <provider>
+    <identifier>
+      <system value="http://happyvalleyclinic.com/staff"/>
+      <value value="18"/>
+    </identifier>
+  </provider>
+  <insurer>
+    <reference value="Organization/2"/>
+  </insurer>
+  <facility>
+    <identifier>
+      <system value="http://statecliniclicensor.com/clinicid"/>
+      <value value="G35B9"/>
+    </identifier>
+  </facility>
+  <insurance>
+    <focal value="true"/>
+    <coverage>
+      <reference value="Coverage/9876B1"/>
+    </coverage>
+    <businessArrangement value="NB8742"/>
+  </insurance>
+  <item>
+    <category>
+      <coding>
+        <system value="http://hl7.org/fhir/benefit-category"/>
+        <code value="medical"/>
+      </coding>
+    </category>
+  </item>
+</CoverageEligibilityRequest>

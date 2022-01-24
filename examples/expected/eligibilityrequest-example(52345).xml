@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CoverageEligibilityRequest xmlns="http://hl7.org/fhir">
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the EligibilityRequest</div>
+  </text>
+  <identifier>
+    <system value="http://happyvalley.com/elegibilityrequest"/>
+    <value value="52345"/>
+  </identifier>
+  <status value="active"/>
+  <priority>
+    <coding>
+      <code value="normal"/>
+    </coding>
+  </priority>
+  <patient>
+    <reference value="Patient/pat1"/>
+  </patient>
+  <created value="2014-08-16"/>
+  <insurer>
+    <reference value="Organization/2"/>
+  </insurer>
+  <insurance>
+    <focal value="true"/>
+    <coverage>
+      <reference value="Coverage/9876B1"/>
+    </coverage>
+  </insurance>
+</CoverageEligibilityRequest>

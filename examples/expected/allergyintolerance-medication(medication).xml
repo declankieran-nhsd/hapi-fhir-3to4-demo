@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<AllergyIntolerance xmlns="http://hl7.org/fhir">
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: medication</p><p><b>clinicalStatus</b>: active</p><p><b>verificationStatus</b>: unconfirmed</p><p><b>category</b>: medication</p><p><b>criticality</b>: high</p><p><b>code</b>: Penicillin G <span>(Details : {RxNorm code '7980' = 'Penicillin G', given as 'Penicillin G'})</span></p><p><b>patient</b>: <a>Patient/example</a></p><p><b>assertedDate</b>: 01/03/2010</p><p><b>recorder</b>: <a>Practitioner/13</a></p><h3>Reactions</h3><table><tr><td>-</td><td><b>Manifestation</b></td></tr><tr><td>*</td><td>Hives <span>(Details : {SNOMED CT code '247472004' = 'Weal', given as 'Hives'})</span></td></tr></table></div>
+  </text>
+  <clinicalStatus>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"/>
+      <code value="active"/>
+    </coding>
+  </clinicalStatus>
+  <verificationStatus>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"/>
+      <code value="unconfirmed"/>
+    </coding>
+  </verificationStatus>
+  <category value="medication"/>
+  <criticality value="high"/>
+  <code>
+    <coding>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <code value="7980"/>
+      <display value="Penicillin G"/>
+    </coding>
+  </code>
+  <patient>
+    <reference value="Patient/example"/>
+  </patient>
+  <recordedDate value="2010-03-01"/>
+  <recorder>
+    <reference value="Practitioner/13"/>
+  </recorder>
+  <reaction>
+    <manifestation>
+      <coding>
+        <system value="http://snomed.info/sct"/>
+        <code value="247472004"/>
+        <display value="Hives"/>
+      </coding>
+    </manifestation>
+  </reaction>
+</AllergyIntolerance>

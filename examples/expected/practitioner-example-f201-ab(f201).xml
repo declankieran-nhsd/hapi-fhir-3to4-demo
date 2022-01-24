@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Practitioner xmlns="http://hl7.org/fhir">
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f201</p><p><b>identifier</b>: UZI-nummer = 12345678901 (OFFICIAL)</p><p><b>active</b>: true</p><p><b>name</b>: Dokter Bronsig(OFFICIAL)</p><p><b>telecom</b>: ph: +31715269111(WORK)</p><p><b>address</b>: Walvisbaai 3 C4 - Automatisering Den helder 2333ZA NLD (WORK)</p><p><b>gender</b>: male</p><p><b>birthDate</b>: 24/12/1956</p><h3>Qualifications</h3><table><tr><td>-</td><td><b>Code</b></td></tr><tr><td>*</td><td>Pulmonologist <span>(Details : {SNOMED CT code '41672002' = 'Respiratory disease specialist', given as 'Pulmonologist'})</span></td></tr></table></div>
+  </text>
+  <identifier>
+    <use value="official"/>
+    <type>
+      <text value="UZI-nummer"/>
+    </type>
+    <system value="urn:oid:2.16.528.1.1007.3.1"/>
+    <value value="12345678901"/>
+  </identifier>
+  <active value="true"/>
+  <name>
+    <use value="official"/>
+    <text value="Dokter Bronsig"/>
+    <family value="Bronsig"/>
+    <given value="Arend"/>
+    <prefix value="Dr."/>
+  </name>
+  <telecom>
+    <system value="phone"/>
+    <value value="+31715269111"/>
+    <use value="work"/>
+  </telecom>
+  <address>
+    <use value="work"/>
+    <line value="Walvisbaai 3"/>
+    <line value="C4 - Automatisering"/>
+    <city value="Den helder"/>
+    <postalCode value="2333ZA"/>
+    <country value="NLD"/>
+  </address>
+  <gender value="male"/>
+  <birthDate value="1956-12-24"/>
+  <qualification>
+    <code>
+      <coding>
+        <system value="http://snomed.info/sct"/>
+        <code value="41672002"/>
+        <display value="Pulmonologist"/>
+      </coding>
+    </code>
+  </qualification>
+</Practitioner>

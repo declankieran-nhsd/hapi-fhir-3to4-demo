@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><Bundle xmlns="http://hl7.org/fhir">
+	<type value="batch-response"/>
+	<!--  todo: regenerate this during QA  -->
+</Bundle>

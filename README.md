@@ -79,10 +79,9 @@ cd examples
 mkdir diffs
 for f in input/*; do diff <(jq -S 'keys' $f) <(jq -S 'keys' expected/$(basename $f)) > diffs/$(basename $f); done
 ```
-## TODO
+## Test data sets
 
-* Work out how to use the StructureDefintions to see if anythings been missed in the transform
-* Extend this to all combinations of version transforms backwards and forwards
+### JSON
 
 A subset of the STU3 examples available at https://github.com/rbren/fhir-swagger/tree/master/schemas/dstu3/examples were used for these tests.  Only 794 out of 2,496 (as of 14/01/22) are used here, as the validator fails on resources for things like a bundles of resources or resources that have contained resources.  The 794 that did succeed are single resources, comprised of 74 unique types
 
@@ -92,7 +91,17 @@ jq '.resourceType' input/* | sort -u | wc -l
 
 The "id" element has also been removed from all resources as this is not currently handled by the validator_cli.jar.  However, for migration purposes having the "id" transfer over to the new resource is probably not a desirable outcome anyway.
 
-TODO Validate in more detail...
+## TODO
+
+* Work out how to use the StructureDefintions to see if anythings been missed in the transform
+* Extend this to all combinations of version transforms backwards and forwards
+* Validate in more detail...  Use a validation service?
+
+### XML
+
+A set of examples is has also been tested (not validated really yet).  Only 368 succeed without error when running the transform.  There are a total of 914 examples in set.   Again, probably likely to things not yet supported...  TOOD see TODO...
+
+The set of files can be found here in the fhir github https://github.com/HL7/fhir/blob/64bcf4567853b8a6e8a836a173a6fad7ba3dd880/source/release3/examples.zip.  The reason these were chosen, is there were unit tests that were working before for the transforms and this seems to be the set they used.
 
 ## HL7 Community Documentation on FML
 
