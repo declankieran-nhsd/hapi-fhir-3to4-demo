@@ -4,6 +4,8 @@ A walk-through of how these results are generated is given in the [directory](..
 
 Examples that are not fully transformed are included in the expected folder to provide expected output in the validate transforms tests that run as part a [CI pipeline](../.github/workflows/validate-transforms.yml) testing the latest version of the validator_cli.
 
+Most issues are from either invalid data or renamed data not being handled.
+
 ## Results
 ### Summary
 |<sub>Total transforms examined:</sub>                 |<sub>788</sub>|

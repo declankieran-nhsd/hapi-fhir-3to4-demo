@@ -64,19 +64,19 @@ Below is a minimal snippet to repeat
 
 Changing the xver StructureMap targets to versioned (4.0) urls, this makes the validator_cli retrieve the corrects version of the StructureDefinitions.
 
-A pytest script has been written to iterate over a set of examples taken from https://github.com/rbren/fhir-swagger/tree/master/schemas/dstu3/examples. There is a pipeline in github actions to run the transforms.  The expected data is currently just the data returned from a successful transform of the data, further analysis would be need to detemine how correct the output is.  Depending on the resource, it varies how much data is successfully transformed over to the version 4.0 resource, but it appears that most data is transferred over with serveral placing data in extensions where there is nowhere to move to in the new version.  
+A pytest script has been written to iterate over a set of examples taken from https://github.com/rbren/fhir-swagger/tree/master/schemas/dstu3/examples. There is a pipeline in github actions to run the transforms.  The expected data is currently just the data returned from a successful transform of the data, so really a simple integration level test to detect if behaviour changes with updates. 
 
-If updates are made to the validator_cli or the StructureDefinitions to improve the maps or functionality, this pipeline should highlight this as a failure.  This is intentional, so that updates are noticed.  This currently means that expected data will then need to be updated.  
+Further analysis on the correctness of the transforms has been done using another script that compares the transforms using the StructureDefintions of the input and transform. The results of the transform comparison are currently limited in that they can't detect if an element has been renamed in the target, or has failed because the data of the element was invalid and caused the failure.  However overall it should that the transform libraries are very robust.   
+
+If updates are made to the validator_cli or the StructureDefinitions and the behaviour of the libraries change, the CI pipeline comparing input and expected output should fail.  
 
 ## Running and testing locally
 
 The modified package must be loaded into your local package cache for this to work if doing it locally.  See the ./github/workflow yml for an example of how to do it on Linux, or refer to the HL7 guidance on [NPM packaging](https://confluence.hl7.org/display/FHIR/NPM+Package+Specification) for further details on using NPM for FHIR packages.  The modified package is included in the repo ./hl7.fhir.xver.r4#1.2.0-mod
 
-The output of the transforms should match exactly what is in the expected folder.  Therefore to examine the transforms, a comparision of examples/input and examples/expected is possible.  The following can be used to examine the difference in terms of top level keys.
+The output of the transforms should match exactly what is in the expected folder.  Therefore to examine the transforms, a comparision of examples/input and examples/expected is possible.  The following usuage of jq can be used to examine the difference in terms of top level keys, however the [comparison script](./scripts/generate_comparison.py) will examine the transforms in more detail as [described here](./examples).
 
-TODO Maybe look at intergrating this into the tests in the pipeline, and examine each object in total.
-
-To get the a diff of the top level keys
+To get a diff of the top level keys using jq
 
 ```shell
 cd examples
@@ -129,4 +129,4 @@ https://github.com/NHSDigital/fhir-transforms.git
 
 * Extend this to all combinations of version transforms backwards and forwards
 * Validate in more detail...  Use a validation service?
-* Extend comparison script to XML and TTL
+* See [README](../scripts) for more [limitations and scopes for extension](../scripts#limitations-/-scope-for-extension) in relation to the [comparison script](./scripts/generate_comparison.py).

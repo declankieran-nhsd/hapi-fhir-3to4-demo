@@ -379,10 +379,14 @@ Anything that is not defined in the source definition is considered to be invali
 }
 ```  
 
-## Limitations
+## Limitations / Scope for extension
 
-* This only supports JSON, but the comparison code has been structured using a strategy pattern, and id following the same dictionary output for an xml and turtle comparator, it should be possible to use the same logic to generate the results template.
+* This only supports JSON, but the comparison code has been structured using a strategy pattern, so if following the same dictionary output for an XML or turtle comparator, it should be possible to use the same logic to generate the results template by just extending the documentcompare library.
 
 * It would clearly be preferable to just indicate lost or invalid data, as opposed to possible lost in the input and transformed.  The current mappings defined in the StructureMaps or the FML could be used for this.  The script and set logic could be extended to facilitate this.  However, the mappings seem to possibly be missing a few edge cases and this script could be used as a test harness for updating the StructureMaps/FML.
+
+* If the key is a valid key and appears to be lost in the transform, it might be that the data in the object was actually invalid.  The comparison code does not currently look at the data, so won't detect whether the data in that element is valid or not.  An element with invalid data will be shown as lost, whereas it should be included in the invalid list.  Probably not too difficult to extend the code to do this...
+
+* There is no support for testing transforms where the resource name has changed.
 
 * No doubt many others :-/
