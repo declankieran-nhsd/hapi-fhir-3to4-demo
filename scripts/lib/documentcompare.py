@@ -3,8 +3,6 @@ import tarfile
 from abc import ABC, abstractmethod
 from functools import reduce
 
-###### remove
-from pprint import pprint
 
 class DocumentCompare(ABC):
 
