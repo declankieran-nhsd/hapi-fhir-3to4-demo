@@ -4,6 +4,10 @@
 
 The purpose of this repo is to demo the transform capabilities of the StructureMap transform functionality of the core [HAPI libraries](https://github.com/hapifhir/org.hl7.fhir.core.git)
 
+A [script](./scripts/generate_comparison.py) to check the results of the transform based on the defined elements has been written and the results are available at the root of the input files folder.  A description of the set alegbra used in the script can be found in the [README](./scripts/README.md) in the [scripts](./scripts) folder.
+
+> **NOTE:** Only JSON is currently supported in the script, so the xml examples are not examined.
+
 The latest Cross-Version package [hl7.fhir.xver.r4#1.2.0](http://fhir.org/packages/hl7.fhir.xver.r4/) uses unversioned URL's for the targets in the individual StructureMaps of the resources.  This currently causes the validator_cli to retrieve the wrong StructureDefinition of the resource for the following invocation of the validator_cli 
 
 ```shell
@@ -91,12 +95,6 @@ jq '.resourceType' input/* | sort -u | wc -l
 
 The "id" element has also been removed from all resources as this is not currently handled by the validator_cli.jar.  However, for migration purposes having the "id" transfer over to the new resource is probably not a desirable outcome anyway.
 
-## TODO
-
-* Work out how to use the StructureDefintions to see if anythings been missed in the transform
-* Extend this to all combinations of version transforms backwards and forwards
-* Validate in more detail...  Use a validation service?
-
 ### XML
 
 A set of examples is has also been tested (not validated really yet).  Only 368 succeed without error when running the transform.  There are a total of 914 examples in set.   Again, probably likely to things not yet supported...  TOOD see TODO...
@@ -127,4 +125,8 @@ https://github.com/NHSDigital/fhir-converter.git
 
 https://github.com/NHSDigital/fhir-transforms.git
 
+## TODO
 
+* Extend this to all combinations of version transforms backwards and forwards
+* Validate in more detail...  Use a validation service?
+* Extend comparison script to XML and TTL

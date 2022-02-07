@@ -33,7 +33,7 @@ jobs:
           mkdir -p ~/.fhir/package-client; \
           mkdir -p ~/.fhir/packages/hl7.fhir.xver.r4#1.2.0; \
           touch ~/.fhir/package-client/packages.fhir.org-hl7.fhir.xver.r4-1.2.0.tgz; \
-          tar -zxf hl7.fhir.xver.r4#1.2.0-mod/package.tgz --directory ~/.fhir/packages/hl7.fhir.xver.r4#1.2.0
+          tar -zxf packages/hl7.fhir.xver.r4#1.2.0-mod/package.tgz --directory ~/.fhir/packages/hl7.fhir.xver.r4#1.2.0
 
       - name: Run tests
         run: cd tests; py.test -vv

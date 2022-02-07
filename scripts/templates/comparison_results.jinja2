@@ -1,0 +1,55 @@
+# Comparison of JSON transforms
+## Overview
+A walk-through of how these results are generated is given in the [directory](../scripts/README.md) of the [script](../script/generate_comparison.py) that generates these results.
+
+## Results
+### Summary
+|<sub>Total transforms examined:</sub>                 |<sub>{{total_files}}</sub>|
+|----------------------------------------|---------------|
+|<sub>Number of transforms with issues to review:</sub> |<sub>{{flagged}}</sub>    |
+|<sub>Transforms with no issue detected:</sub>|<sub>{{no_issues}}</sub>  |
+---
+{% for file in comparisons -%}
+### {{ basename(file) }}
+{%- set diff_found = [] -%}
+{%- for key in comparisons[file] -%}
+{%- if comparisons[file][key]['Lost'] or
+    comparisons[file][key]['InputRenamed'] or
+    comparisons[file][key]['TransformedRenamed'] or
+    comparisons[file][key]['InvalidKeys'] %}
+*{{ format_key(key) }}*
+{% if comparisons[file][key]['Lost'] %}
+**<sub>Keys lost during transform:</sub>**
+```python
+{{ pformat(comparisons[file][key]['Lost']) }}
+```
+{% if diff_found.append(True) -%}{%- endif -%}
+{%- endif -%}
+{%- if comparisons[file][key]['InputRenamed'] %}
+**<sub>Input keys possibly lost or renamed:</sub>**
+```python
+{{ pformat(comparisons[file][key]['InputRenamed']) }}
+```
+{% if diff_found.append(True) -%}{%- endif -%}
+{%- endif -%}
+{%- if comparisons[file][key]['TransformedRenamed'] %}
+**<sub>Transform output keys possibly lost or renamed:</sub>**
+```python
+{{ pformat(comparisons[file][key]['TransformedRenamed']) }}
+```
+{% if diff_found.append(True) -%}{%- endif -%}
+{%- endif -%}
+{%- if comparisons[file][key]['InvalidKeys'] %}
+**<sub>Invalid keys in inputs not defined in source definition:</sub>**
+```python
+{{ pformat(comparisons[file][key]['InvalidKeys']) }}
+```
+{% if diff_found.append(True) -%}{%- endif -%}
+{% endif -%}
+{%- else %}
+{%- endif -%}
+{%- endfor -%}
+{%- if not diff_found %} ✔
+{%- endif %}
+---
+{% endfor -%}
