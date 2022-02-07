@@ -129,4 +129,4 @@ https://github.com/NHSDigital/fhir-transforms.git
 
 * Extend this to all combinations of version transforms backwards and forwards
 * Validate in more detail...  Use a validation service?
-* See [README](../scripts) for more [limitations and scopes for extension](../scripts#limitations-/-scope-for-extension) in relation to the [comparison script](./scripts/generate_comparison.py).
+* See [README](./scripts) for more [limitations and scopes for extension](./scripts#limitations--scope-for-extension) in relation to the [comparison script](./scripts/generate_comparison.py).
