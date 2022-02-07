@@ -141,10 +141,10 @@ See the patient StructureDefinition above for how the definition data is structu
 **Input -> SET( input )**
 ```json  
 {
-  'NotInSourceDefinition': 'data',
-  'InSourceDefinition': { ... },
-  'LostData': 123,
-  'SuccessfullyTransformed': 'data'
+  "NotInSourceDefinition": "data",
+  "InSourceDefinition": {},
+  "LostData": 123,
+  "SuccessfullyTransformed": "data"
 }
 ```  
 **Source Superset -> SET( source_superset )**
@@ -213,7 +213,7 @@ The keys that have been identified in the previous steps as being data that shou
 **Transformed -> SET( transformed )**
 ```json  
 {
-  'SuccessfullyTransformed': 'data'
+  "SuccessfullyTransformed": "data"
 }
 ```  
 **Lost Keys ->  SET( ( (input ∩ source_superset) ∩ target_superset ) - transformed )**
@@ -244,9 +244,9 @@ Subtracting the transformed gives the keys that are defined within a definition 
 **Input -> SET( input )**
 ```json  
 {
-  'PossiblyLostData': 456,
-  'SuccessfullyTransformed': 'data',
-  'InvalidData': 123
+  "PossiblyLostData": 456,
+  "SuccessfullyTransformed": "data",
+  "InvalidData": 123
 }
 ```  
 
@@ -262,7 +262,7 @@ Subtracting the transformed gives the keys that are defined within a definition 
 **Transformed -> SET( transformed )**
 ```json  
 {
-  'SuccessfullyTransformed': 'data'
+  "SuccessfullyTransformed": "data"
 }
 ```  
 
@@ -356,10 +356,10 @@ Anything that is not defined in the source definition is considered to be invali
 **Input -> SET( input )**
 ```json  
 {
-  'NotInSourceDefinition': 'data',
-  'InSourceDefinition': { ... },
-  'LostData': 123,
-  'SuccessfullyTransformed': 'data'
+  "NotInSourceDefinition": "data",
+  "InSourceDefinition": {},
+  "LostData": 123,
+  "SuccessfullyTransformed": "data"
 }
 ```  
 **Source Superset -> SET( source_superset )**
