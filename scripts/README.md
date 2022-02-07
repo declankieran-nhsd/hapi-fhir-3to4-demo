@@ -9,17 +9,17 @@ The StructureDefinitions for the [source](../packages/hl7.fhir.r3.core%233.0.2/p
 The results are sectioned in terms of the hierarchy in StructureDefinition (example using Encounter below).  The script creates a dictionary to hold the definition of each resource. Each level within the (JSON) resource structure will be examined in terms of sub elements. 
 
 For example:
-```
+```  
     "Encounter"
     "Encounter.id"
     "Encounter.meta"
     "Encounter.language"
     "etc ..."
-```
+```  
 Will provide an element with the key ('Encounter') with the sub elements, i.e.
-```python
+```python  
 {('Encounter'): ['id', 'meta', 'language', ...]}
-```
+```  
 For a deeper level, for example:
 ```
     "Encounter.classHistory"
@@ -27,17 +27,17 @@ For a deeper level, for example:
     "Encounter.classHistory.extension"
     "Encounter.classHistory.modifierExtension"
     "etc ..."
-```
+```  
 Will provide an element with the key ('Encounter', 'classHistory') with the sub elements, i.e.
-```python
+```python  
 {('Encounter', 'classHistory'): ['id', 'extension', 'modifierExtension', ...]}
-```
+```  
 The root of the dictionary provides the name of the resource
-```python
+```python  
 {(): ['Encounter'])
-```
+```  
 Below shows how the STU3 snapshot of patient is packaged in a dictionary
-```python
+```python  
 {(): ['Patient'],
  ('Patient',): ['id',
                 'meta',
@@ -86,7 +86,7 @@ Below shows how the STU3 snapshot of patient is packaged in a dictionary
                           'organization',
                           'period'],
  ('Patient', 'link'): ['id', 'extension', 'modifierExtension', 'other', 'type']}
-```
+```  
 
 The format of the results are sectioned based on each element definition, i.e
 
@@ -109,7 +109,7 @@ where the **[Details]** will include the following possible sections
 Each section may have a list containing the keys that have been flagged, e.g.
 ```python
 {'contentReference', 'contentString'}
-```
+```  
 The different results sections can be described using set algebra, where  
 <sub>**- input** = the input data at a given level, as maps to the superset defined in the StructureDefinition</sub>  
 <sub>**- transformed** = the output data of the transform at a given level, as maps to the superset defined in the StructureDefinition</sub>  
@@ -139,16 +139,16 @@ See the patient StructureDefinition above for how the definition data is structu
 
 ##### Worked example:
 **Input -> SET( input )**
-```json
+```json  
 {
   'NotInSourceDefinition': 'data',
   'InSourceDefinition': { ... },
   'LostData': 123,
   'SuccessfullyTransformed': 'data'
 }
-```
+```  
 **Source Superset -> SET( source_superset )**
-```python
+```python  
 {
   {'Resource'): ['LostData',
                  'InSourceDefinition',
@@ -156,13 +156,13 @@ See the patient StructureDefinition above for how the definition data is structu
                  'AnotherDef',
                  'NotInTarget']
 }
-```
+```  
 **Valid Keys -> SET( input ∩ source_superset )**
-```python
+```python  
 {
   ['InSourceDefinition', 'LostData', 'SuccessfullyTransformed']
 }
-```
+```  
 <br></br>
 <ins>**_(input ∩ source_superset) ∩ target_superset_**</ins>
 
@@ -174,28 +174,28 @@ Elements (keys) defined in the source definition will not necessarily exist in t
 
 ##### Worked example:
 **Valid Keys -> SET( input ∩ source_superset )**
-```python
+```python  
 {
   ['InSourceDefinition', 'LostData', 'SuccessfullyTransformed']
 }
-```
+```  
 
 **Target Superset -> SET( target_superset )**
-```python
+```python  
 {
   {'Resource'): ['LostData',
                  'AnotherDef',
                  'SuccessfullyTransformed',
                  'NotInSource']
 }
-```
+```  
 
 **Must Transform -> SET ( ( input ∩ source_superset ) ∩ target_superset )**
-```python
+```python  
 {
   {'Resource'): ['LostData', 'SuccessfullyTransformed']
 }
-```
+```  
 <br></br>
 <ins>**_( (input ∩ source_superset) ∩ target_superset ) - transformed_**</ins>
 
@@ -205,23 +205,23 @@ The keys that have been identified in the previous steps as being data that shou
 
 ##### Worked example:
 **Must Transform -> SET( (input ∩ source_superset) ∩ target_superset )**
-```python
+```python  
 {
   {'Resource'): ['LostData', 'SuccessfullyTransformed']
 }
-```
+```  
 **Transformed -> SET( transformed )**
-```json
+```json  
 {
   'SuccessfullyTransformed': 'data'
 }
-```
+```  
 **Lost Keys ->  SET( ( (input ∩ source_superset) ∩ target_superset ) - transformed )**
-```python
+```python  
 {
   ['LostData']
 }
-```
+```  
 
 #### b. Input keys possibly lost or renamed
 This is defined using the following formula:
@@ -242,36 +242,36 @@ Subtracting the transformed gives the keys that are defined within a definition 
 
 ##### Worked example:
 **Input -> SET( input )**
-```json
+```json  
 {
   'PossiblyLostData': 456,
   'SuccessfullyTransformed': 'data',
   'InvalidData': 123
 }
-```
+```  
 
 **Source Superset -> SET( source_superset )**
-```python
+```python  
 {
   {'Resource'): ['PossiblyLostData',
                  'SuccessfullyTransformed',
                  'AnotherDef']
 }
-```
+```  
 
 **Transformed -> SET( transformed )**
-```json
+```json  
 {
   'SuccessfullyTransformed': 'data'
 }
-```
+```  
 
 **Possibly lost -> SET( (input ∩ source_superset) - transformed )**
-```python
+```python  
 {
   ['PossiblyLostData']
 }
-```
+```  
 <br></br>
 <ins>**_source_superset Δ target_superset_**</ins>
 
@@ -281,29 +281,29 @@ The symmetric difference of the source and the target definition is taken to get
 
 ##### Worked example:
 **Source Superset -> SET( source_superset )**
-```python
+```python  
 {
   {'Resource'): ['PossiblyLostData',
                  'SuccessfullyTransformed',
                  'AnotherDef']
 }
-```
+```  
 
 **Target Superset -> SET( target_superset )**
-```python
+```python  
 {
   {'Resource'): ['AnotherDef',
                  'SuccessfullyTransformed',
                  'NotInSource']
 }
-```
+```  
 
 **Symmetric Definition Diff -> SET( source_superset Δ target_superset )**
-```python
+```python  
 {
   ['PossiblyLostData', 'NotInSource']
 }
-```
+```  
 <br></br>
 <ins>**_( (input ∩ source_superset) - transformed) ∩ (source_superset Δ target_superset)_**</ins>
 
@@ -316,25 +316,25 @@ The intersection of the possibly lost keys in the input and those that are eithe
 ##### Worked example:
 
 **Possibly lost -> SET( (input ∩ source_superset) - transformed )**
-```python
+```python  
 {
   ['PossiblyLostData']
 }
-```
+```  
 
 **Symmetric Definition Diff -> SET( source_superset Δ target_superset )**
-```python
+```python  
 {
   ['PossiblyLostData', 'NotInSource']
 }
-```
+```  
 
 **Possibly lost in input -> SET( (input ∩ source_superset) - transformed) ∩ (source_superset Δ target_superset) )**
-```python
+```python  
 {
   ['PossiblyLostData']
 }
-```
+```  
 
 #### c. Transform output keys possibly lost or renamed
 This is defined using the following formula:
@@ -354,16 +354,16 @@ Anything that is not defined in the source definition is considered to be invali
 
 ##### Worked example:
 **Input -> SET( input )**
-```json
+```json  
 {
   'NotInSourceDefinition': 'data',
   'InSourceDefinition': { ... },
   'LostData': 123,
   'SuccessfullyTransformed': 'data'
 }
-```
+```  
 **Source Superset -> SET( source_superset )**
-```python
+```python  
 {
   {'Resource'): ['LostData',
                  'InSourceDefinition',
@@ -371,13 +371,13 @@ Anything that is not defined in the source definition is considered to be invali
                  'AnotherDef',
                  'NotInTarget']
 }
-```
+```  
 **Invalid Keys -> SET( input ∩ source_superset )**
-```python
+```python  
 {
   ['NotInSourceDefinition']
 }
-```
+```  
 
 ## Limitations
 
