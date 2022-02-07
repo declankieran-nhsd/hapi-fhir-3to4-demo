@@ -135,7 +135,7 @@ Elements (keys) defined in the snapshot of the source StructureDefinition are us
 
 See the patient StructureDefinition above for how the definition data is structured in a tuple indexed python dictionary.
 
-![Valid keys](./images/valid_keys.svg "Data in input considered valid. SET( input ∩ source_superset )")
+![Valid keys](./images/valid_keys.svg?raw=true "Data in input considered valid. SET( input ∩ source_superset )")
 
 ##### Worked example:
 **Input -> SET( input )**
@@ -170,7 +170,7 @@ Elements (keys) defined in the source definition will not necessarily exist in t
 
 > **NOTE:** It would be possible for a key of the same name to be mapped to a different part of the resource hierarchy, and for another of the same name to be mapped back to the same level/object examined.  This would be a swap of data with the same name.  This is not considered in this check, and is possibly one of things that could be considered as an extension to this script.  The data (values) are not checked at all in these tests, only the keys for simplicity.
 
-![Must transform](./images/must_transform.svg "Data that should be in transformed output. SET( (input ∩ source_superset) ∩ target_superset )")
+![Must transform](./images/must_transform.svg?raw=true "Data that should be in transformed output. SET( (input ∩ source_superset) ∩ target_superset )")
 
 ##### Worked example:
 **Valid Keys -> SET( input ∩ source_superset )**
@@ -201,7 +201,7 @@ Elements (keys) defined in the source definition will not necessarily exist in t
 
 The keys that have been identified in the previous steps as being data that should be in the same level in the transform, now has the transformed data subtracted from it, i.e. asymmetric difference of the sets must_transform and transformed.
 
-![Lost keys](./images/lost_keys.svg "Data that has been lost during transform. SET( ((input ∩ source_superset) ∩ target_superset) - transformed")
+![Lost keys](./images/lost_keys.svg?raw=true "Data that has been lost during transform. SET( ((input ∩ source_superset) ∩ target_superset) - transformed")
 
 ##### Worked example:
 **Must Transform -> SET( (input ∩ source_superset) ∩ target_superset )**
@@ -238,7 +238,7 @@ The asymmetric difference of the valid keys (input ∩ source_superset, as defin
 
 Subtracting the transformed gives the keys that are defined within a definition but could be lost within the input data.  The next sections uses much the same operations to indicate possibly lost data in the transformed.
 
-![Input keys possibly lost](./images/possibly_lost.svg "Valid keys, as per source definition, that are not contained in the transformed data. SET( (input ∩ source_superset) - transformed )")
+![Input keys possibly lost](./images/possibly_lost.svg?raw=true "Valid keys, as per source definition, that are not contained in the transformed data. SET( (input ∩ source_superset) - transformed )")
 
 ##### Worked example:
 **Input -> SET( input )**
@@ -277,7 +277,7 @@ Subtracting the transformed gives the keys that are defined within a definition 
 
 The symmetric difference of the source and the target definition is taken to get the set of keys that have either been renamed or deprecated.
 
-![Symmetric difference of the source and the target definition](./images/symmetric_diff_def.svg "Keys that have either been renamed or deprecated. SET( source_superset Δ target_superset )")
+![Symmetric difference of the source and the target definition](./images/symmetric_diff_def.svg?raw=true "Keys that have either been renamed or deprecated. SET( source_superset Δ target_superset )")
 
 ##### Worked example:
 **Source Superset -> SET( source_superset )**
@@ -311,7 +311,7 @@ The intersection of the possibly lost keys in the input and those that are eithe
 
 > **NOTE:** This is a limitation of the scripts that checks for differences and is noted in the limitations section below.  For a fully accurate report, a mapping would need to be referenced, such as one of the defined StructureMaps, however this strategy should be useful as a test bed for fully completing the StructureMaps.
 
-![Possibly lost keys in input](./images/possibly_lost_input.svg "Keys in the input data that have either been renamed or deprecated. SET( (input ∩ source_superset) - transformed) ∩ (source_superset Δ target_superset) )")
+![Possibly lost keys in input](./images/possibly_lost_input.svg?raw=true "Keys in the input data that have either been renamed or deprecated. SET( (input ∩ source_superset) - transformed) ∩ (source_superset Δ target_superset) )")
 
 ##### Worked example:
 
@@ -350,7 +350,7 @@ This is defined using the following formula:
 
 Anything that is not defined in the source definition is considered to be invalid input, which may include misspelled element keys as well as other unexpected data.
 
-![Invalid keys in input](./images/invalid_keys.svg "Keys in the input data that are undefined. SET( input - source_superset )")
+![Invalid keys in input](./images/invalid_keys.svg?raw=true "Keys in the input data that are undefined. SET( input - source_superset )")
 
 ##### Worked example:
 **Input -> SET( input )**
