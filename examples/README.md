@@ -8,8 +8,8 @@ Examples that are not fully transformed are included in the expected folder to p
 ### Summary
 |<sub>Total transforms examined:</sub>                 |<sub>788</sub>|
 |----------------------------------------|---------------|
-|<sub>Number of transforms with issues to review:</sub> |<sub>224</sub>    |
-|<sub>Transforms with no issue detected:</sub>|<sub>564</sub>  |
+|<sub>Number of transforms with issues to review:</sub> |<sub>215</sub>    |
+|<sub>Transforms with no issue detected:</sub>|<sub>573</sub>  |
 ---
 ### [composition-example.json](./input/composition-example.json)
 *Composition:*
@@ -39,13 +39,6 @@ Examples that are not fully transformed are included in the expected folder to p
 **<sub>Keys lost during transform:</sub>**
 ```python
 {'status'}
-```
-
-*Communication --> payload:*
-
-**<sub>Invalid keys in inputs not defined in source definition:</sub>**
-```python
-{'contentReference', 'contentString'}
 ```
 
 ---
@@ -130,11 +123,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'effectiveDateTime',
- 'medicationReference',
- 'patient',
- 'reasonForUseCodeableConcept',
- 'wasNotTaken'}
+{'effectiveDateTime', 'patient', 'reasonForUseCodeableConcept', 'wasNotTaken'}
 ```
 
 ---
@@ -155,7 +144,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'patient', 'dateRecorded'}
+{'dateRecorded', 'patient'}
 ```
 
 ---
@@ -170,7 +159,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'abatementDateTime', 'patient', 'encounter', 'dateRecorded', 'onsetDateTime'}
+{'onsetDateTime', 'encounter', 'dateRecorded', 'patient', 'abatementDateTime'}
 ```
 
 *Condition --> stage:*
@@ -201,7 +190,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'fhir_comments', 'valueSampledData'}
+{'valueSampledData', 'fhir_comments'}
 ```
 
 ---
@@ -231,7 +220,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'patient', 'onsetDateTime'}
+{'onsetDateTime', 'patient'}
 ```
 
 ---
@@ -284,7 +273,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Input keys possibly lost or renamed:</sub>**
 ```python
-{'isBrand', 'package'}
+{'package', 'isBrand'}
 ```
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
@@ -409,18 +398,6 @@ Examples that are not fully transformed are included in the expected folder to p
 ### [valueset-observation-methods.json](./input/valueset-observation-methods.json) ✔
 ---
 ### [audit-event-example-media.json](./input/audit-event-example-media.json)
-*AuditEvent --> source:*
-
-**<sub>Input keys possibly lost or renamed:</sub>**
-```python
-{'identifier'}
-```
-
-**<sub>Transform output keys possibly lost or renamed:</sub>**
-```python
-{'observer'}
-```
-
 *AuditEvent --> agent:*
 
 **<sub>Input keys possibly lost or renamed:</sub>**
@@ -450,6 +427,18 @@ Examples that are not fully transformed are included in the expected folder to p
 {'what'}
 ```
 
+*AuditEvent --> source:*
+
+**<sub>Input keys possibly lost or renamed:</sub>**
+```python
+{'identifier'}
+```
+
+**<sub>Transform output keys possibly lost or renamed:</sub>**
+```python
+{'observer'}
+```
+
 ---
 ### [valueset-parent-relationship-codes.json](./input/valueset-parent-relationship-codes.json) ✔
 ---
@@ -462,7 +451,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'patient', 'onsetDateTime'}
+{'onsetDateTime', 'patient'}
 ```
 
 ---
@@ -481,14 +470,7 @@ Examples that are not fully transformed are included in the expected folder to p
 ---
 ### [substance-example-f201-dust.json](./input/substance-example-f201-dust.json) ✔
 ---
-### [observation-example-f005-hemoglobin.json](./input/observation-example-f005-hemoglobin.json)
-*Observation:*
-
-**<sub>Invalid keys in inputs not defined in source definition:</sub>**
-```python
-{'effectivePeriod', 'valueQuantity'}
-```
-
+### [observation-example-f005-hemoglobin.json](./input/observation-example-f005-hemoglobin.json) ✔
 ---
 ### [valueset-specimen-status.json](./input/valueset-specimen-status.json) ✔
 ---
@@ -649,7 +631,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'_dateRecorded', 'patient', 'onsetQuantity', 'dateRecorded'}
+{'_dateRecorded', 'dateRecorded', 'patient', 'onsetQuantity'}
 ```
 
 *Condition --> evidence:*
@@ -684,13 +666,6 @@ Examples that are not fully transformed are included in the expected folder to p
 {'date'}
 ```
 
-*RiskAssessment --> prediction:*
-
-**<sub>Invalid keys in inputs not defined in source definition:</sub>**
-```python
-{'probabilityDecimal', 'whenRange'}
-```
-
 ---
 ### [organization-example-f001-burgers.json](./input/organization-example-f001-burgers.json) ✔
 ---
@@ -713,11 +688,6 @@ Examples that are not fully transformed are included in the expected folder to p
 **<sub>Transform output keys possibly lost or renamed:</sub>**
 ```python
 {'note'}
-```
-
-**<sub>Invalid keys in inputs not defined in source definition:</sub>**
-```python
-{'effectivePeriod'}
 ```
 
 ---
@@ -828,7 +798,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'patient', 'encounter', 'dateRecorded', 'onsetDateTime'}
+{'onsetDateTime', 'encounter', 'dateRecorded', 'patient'}
 ```
 
 *Condition --> evidence:*
@@ -891,7 +861,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'document', 'valueSet', 'model', 'moduleMetadata'}
+{'model', 'moduleMetadata', 'document', 'valueSet'}
 ```
 
 ---
@@ -918,14 +888,7 @@ Examples that are not fully transformed are included in the expected folder to p
 ---
 ### [operation-messageheader-process-message.json](./input/operation-messageheader-process-message.json) ✔
 ---
-### [patient-example-proband.json](./input/patient-example-proband.json)
-*Patient:*
-
-**<sub>Invalid keys in inputs not defined in source definition:</sub>**
-```python
-{'deceasedBoolean'}
-```
-
+### [patient-example-proband.json](./input/patient-example-proband.json) ✔
 ---
 ### [patient-extensions-Patient-mothersMaidenName.json](./input/patient-extensions-Patient-mothersMaidenName.json)
 *SearchParameter:*
@@ -936,14 +899,7 @@ Examples that are not fully transformed are included in the expected folder to p
 ```
 
 ---
-### [observation-example-f004-erythrocyte.json](./input/observation-example-f004-erythrocyte.json)
-*Observation:*
-
-**<sub>Invalid keys in inputs not defined in source definition:</sub>**
-```python
-{'effectivePeriod', 'valueQuantity'}
-```
-
+### [observation-example-f004-erythrocyte.json](./input/observation-example-f004-erythrocyte.json) ✔
 ---
 ### [valueset-sequence-species.json](./input/valueset-sequence-species.json) ✔
 ---
@@ -1072,7 +1028,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'patient', 'encounter', 'dateRecorded', 'onsetDateTime'}
+{'onsetDateTime', 'encounter', 'dateRecorded', 'patient'}
 ```
 
 ---
@@ -1102,7 +1058,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'patient', 'encounter', 'dateRecorded', 'onsetDateTime'}
+{'onsetDateTime', 'encounter', 'dateRecorded', 'patient'}
 ```
 
 ---
@@ -1144,7 +1100,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'lockedDate', '_url', '_version', '_lockedDate', '_name'}
+{'_name', '_url', '_lockedDate', '_version', 'lockedDate'}
 ```
 
 ---
@@ -1242,14 +1198,7 @@ Examples that are not fully transformed are included in the expected folder to p
 ```
 
 ---
-### [patient-example-d.json](./input/patient-example-d.json)
-*Patient:*
-
-**<sub>Invalid keys in inputs not defined in source definition:</sub>**
-```python
-{'deceasedBoolean'}
-```
-
+### [patient-example-d.json](./input/patient-example-d.json) ✔
 ---
 ### [parameters-example.json](./input/parameters-example.json)
 *Parameters --> parameter:*
@@ -1257,11 +1206,6 @@ Examples that are not fully transformed are included in the expected folder to p
 **<sub>Keys lost during transform:</sub>**
 ```python
 {'resource'}
-```
-
-**<sub>Invalid keys in inputs not defined in source definition:</sub>**
-```python
-{'valueDate'}
 ```
 
 ---
@@ -1276,7 +1220,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'deceasedBoolean', '_gender', '_birthDate'}
+{'_gender', '_birthDate'}
 ```
 
 ---
@@ -1293,7 +1237,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'_status', 'valueQuantity'}
+{'_status'}
 ```
 
 *Observation --> referenceRange:*
@@ -1360,7 +1304,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'medicationReference', 'patient', 'wasNotTaken', 'effectiveDateTime'}
+{'effectiveDateTime', 'patient', 'wasNotTaken'}
 ```
 
 ---
@@ -1401,23 +1345,6 @@ Examples that are not fully transformed are included in the expected folder to p
 {'purposeOfEvent'}
 ```
 
-*AuditEvent --> source:*
-
-**<sub>Input keys possibly lost or renamed:</sub>**
-```python
-{'identifier'}
-```
-
-**<sub>Transform output keys possibly lost or renamed:</sub>**
-```python
-{'observer'}
-```
-
-**<sub>Invalid keys in inputs not defined in source definition:</sub>**
-```python
-{'_site'}
-```
-
 *AuditEvent --> agent:*
 
 **<sub>Keys lost during transform:</sub>**
@@ -1427,7 +1354,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Input keys possibly lost or renamed:</sub>**
 ```python
-{'reference', 'userId'}
+{'userId', 'reference'}
 ```
 
 **<sub>Transform output keys possibly lost or renamed:</sub>**
@@ -1445,6 +1372,23 @@ Examples that are not fully transformed are included in the expected folder to p
 **<sub>Transform output keys possibly lost or renamed:</sub>**
 ```python
 {'what'}
+```
+
+*AuditEvent --> source:*
+
+**<sub>Input keys possibly lost or renamed:</sub>**
+```python
+{'identifier'}
+```
+
+**<sub>Transform output keys possibly lost or renamed:</sub>**
+```python
+{'observer'}
+```
+
+**<sub>Invalid keys in inputs not defined in source definition:</sub>**
+```python
+{'_site'}
 ```
 
 ---
@@ -1544,17 +1488,17 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Input keys possibly lost or renamed:</sub>**
 ```python
-{'date', 'explanation', 'vaccinationProtocol'}
+{'vaccinationProtocol', 'explanation', 'date'}
 ```
 
 **<sub>Transform output keys possibly lost or renamed:</sub>**
 ```python
-{'reasonCode', 'protocolApplied'}
+{'protocolApplied', 'reasonCode'}
 ```
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'wasNotGiven', 'requester', 'reported', 'performer'}
+{'performer', 'requester', 'wasNotGiven', 'reported'}
 ```
 
 ---
@@ -1565,7 +1509,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'practitionerRole', '_birthDate'}
+{'_birthDate', 'practitionerRole'}
 ```
 
 ---
@@ -1593,7 +1537,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'practitionerRole', '_birthDate'}
+{'_birthDate', 'practitionerRole'}
 ```
 
 ---
@@ -1604,7 +1548,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Input keys possibly lost or renamed:</sub>**
 ```python
-{'isBrand', 'package'}
+{'package', 'isBrand'}
 ```
 
 ---
@@ -1725,14 +1669,14 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'effectiveTimePeriod', 'medicationReference', 'patient', 'practitioner'}
+{'practitioner', 'patient', 'effectiveTimePeriod'}
 ```
 
 *MedicationAdministration --> dosage:*
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'quantity', 'rateRatio'}
+{'quantity'}
 ```
 
 ---
@@ -1799,30 +1743,18 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'effectiveTimePeriod', 'medicationReference', 'patient', 'practitioner'}
+{'practitioner', 'patient', 'effectiveTimePeriod'}
 ```
 
 *MedicationAdministration --> dosage:*
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'quantity', 'rateRatio'}
+{'quantity'}
 ```
 
 ---
 ### [auditevent-example.json](./input/auditevent-example.json)
-*AuditEvent --> source:*
-
-**<sub>Input keys possibly lost or renamed:</sub>**
-```python
-{'identifier'}
-```
-
-**<sub>Transform output keys possibly lost or renamed:</sub>**
-```python
-{'observer'}
-```
-
 *AuditEvent --> agent:*
 
 **<sub>Input keys possibly lost or renamed:</sub>**
@@ -1845,6 +1777,18 @@ Examples that are not fully transformed are included in the expected folder to p
 **<sub>Transform output keys possibly lost or renamed:</sub>**
 ```python
 {'what'}
+```
+
+*AuditEvent --> source:*
+
+**<sub>Input keys possibly lost or renamed:</sub>**
+```python
+{'identifier'}
+```
+
+**<sub>Transform output keys possibly lost or renamed:</sub>**
+```python
+{'observer'}
 ```
 
 ---
@@ -1904,7 +1848,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'fhir_comments', 'valueQuantity'}
+{'fhir_comments'}
 ```
 
 ---
@@ -1940,7 +1884,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'medicationReference', 'patient', 'wasNotTaken', 'effectiveDateTime'}
+{'effectiveDateTime', 'patient', 'wasNotTaken'}
 ```
 
 ---
@@ -1973,7 +1917,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Input keys possibly lost or renamed:</sub>**
 ```python
-{'isBrand', 'package'}
+{'package', 'isBrand'}
 ```
 
 ---
@@ -2079,7 +2023,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'deviceName', '_frames'}
+{'_frames', 'deviceName'}
 ```
 
 ---
@@ -2090,18 +2034,6 @@ Examples that are not fully transformed are included in the expected folder to p
 ### [valueset-task-priority.json](./input/valueset-task-priority.json) ✔
 ---
 ### [audit-event-example-vread.json](./input/audit-event-example-vread.json)
-*AuditEvent --> source:*
-
-**<sub>Input keys possibly lost or renamed:</sub>**
-```python
-{'identifier'}
-```
-
-**<sub>Transform output keys possibly lost or renamed:</sub>**
-```python
-{'observer'}
-```
-
 *AuditEvent --> agent:*
 
 **<sub>Input keys possibly lost or renamed:</sub>**
@@ -2126,13 +2058,25 @@ Examples that are not fully transformed are included in the expected folder to p
 {'what'}
 ```
 
+*AuditEvent --> source:*
+
+**<sub>Input keys possibly lost or renamed:</sub>**
+```python
+{'identifier'}
+```
+
+**<sub>Transform output keys possibly lost or renamed:</sub>**
+```python
+{'observer'}
+```
+
 ---
 ### [library-exclusive-breastfeeding-cqm-logic.json](./input/library-exclusive-breastfeeding-cqm-logic.json)
 *Library:*
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'document', 'valueSet', 'model', 'moduleMetadata'}
+{'model', 'moduleMetadata', 'document', 'valueSet'}
 ```
 
 ---
@@ -2145,7 +2089,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'valueQuantity', 'effectiveDateTime', 'encounter'}
+{'encounter', 'effectiveDateTime'}
 ```
 
 ---
@@ -2154,7 +2098,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'patient', 'encounter', 'dateRecorded', 'onsetDateTime'}
+{'onsetDateTime', 'encounter', 'dateRecorded', 'patient'}
 ```
 
 ---
@@ -2205,7 +2149,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Input keys possibly lost or renamed:</sub>**
 ```python
-{'isBrand', 'package'}
+{'package', 'isBrand'}
 ```
 
 ---
@@ -2227,7 +2171,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'document', 'valueSet', 'model', 'moduleMetadata'}
+{'model', 'moduleMetadata', 'document', 'valueSet'}
 ```
 
 ---
@@ -2249,11 +2193,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'effectiveDateTime',
- 'medicationReference',
- 'patient',
- 'reasonForUseCodeableConcept',
- 'wasNotTaken'}
+{'effectiveDateTime', 'patient', 'reasonForUseCodeableConcept', 'wasNotTaken'}
 ```
 
 ---
@@ -2471,7 +2411,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'status', '_recordedDate', 'substance', 'recordedDate'}
+{'recordedDate', '_recordedDate', 'substance', 'status'}
 ```
 
 ---
@@ -2492,7 +2432,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'valueQuantity', 'effectiveDateTime'}
+{'effectiveDateTime'}
 ```
 
 *Observation --> referenceRange:*
@@ -2627,7 +2567,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'organizationReference', 'requestReference'}
+{'requestReference', 'organizationReference'}
 ```
 
 ---
@@ -2644,7 +2584,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'_url', '_version', '_name'}
+{'_name', '_url', '_version'}
 ```
 
 *ValueSet --> compose:*
@@ -2698,14 +2638,7 @@ Examples that are not fully transformed are included in the expected folder to p
 ---
 ### [appointment-example.json](./input/appointment-example.json) ✔
 ---
-### [observation-example-f001-glucose.json](./input/observation-example-f001-glucose.json)
-*Observation:*
-
-**<sub>Invalid keys in inputs not defined in source definition:</sub>**
-```python
-{'effectivePeriod', 'valueQuantity'}
-```
-
+### [observation-example-f001-glucose.json](./input/observation-example-f001-glucose.json) ✔
 ---
 ### [valueset-intervention.json](./input/valueset-intervention.json) ✔
 ---
@@ -2765,18 +2698,6 @@ Examples that are not fully transformed are included in the expected folder to p
 ### [relatedperson-example-peter.json](./input/relatedperson-example-peter.json) ✔
 ---
 ### [audit-event-example-search.json](./input/audit-event-example-search.json)
-*AuditEvent --> source:*
-
-**<sub>Input keys possibly lost or renamed:</sub>**
-```python
-{'identifier'}
-```
-
-**<sub>Transform output keys possibly lost or renamed:</sub>**
-```python
-{'observer'}
-```
-
 *AuditEvent --> agent:*
 
 **<sub>Input keys possibly lost or renamed:</sub>**
@@ -2787,6 +2708,18 @@ Examples that are not fully transformed are included in the expected folder to p
 **<sub>Transform output keys possibly lost or renamed:</sub>**
 ```python
 {'who'}
+```
+
+*AuditEvent --> source:*
+
+**<sub>Input keys possibly lost or renamed:</sub>**
+```python
+{'identifier'}
+```
+
+**<sub>Transform output keys possibly lost or renamed:</sub>**
+```python
+{'observer'}
 ```
 
 ---
@@ -2822,7 +2755,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'valueQuantity', 'fhir_comments'}
+{'fhir_comments'}
 ```
 
 ---
@@ -2834,18 +2767,18 @@ Examples that are not fully transformed are included in the expected folder to p
 {'_publisher'}
 ```
 
-*ValueSet --> expansion:*
-
-**<sub>Invalid keys in inputs not defined in source definition:</sub>**
-```python
-{'_offset', '_total', '_identifier', 'fhir_comments', '_timestamp'}
-```
-
 *ValueSet --> compose:*
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
 {'fhir_comments'}
+```
+
+*ValueSet --> expansion:*
+
+**<sub>Invalid keys in inputs not defined in source definition:</sub>**
+```python
+{'_timestamp', '_offset', '_total', '_identifier', 'fhir_comments'}
 ```
 
 ---
@@ -2875,7 +2808,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'patient', 'indication', '_class'}
+{'patient', '_class', 'indication'}
 ```
 
 ---
@@ -2988,7 +2921,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'effectiveTimePeriod', 'medicationReference', 'patient', 'practitioner'}
+{'practitioner', 'patient', 'effectiveTimePeriod'}
 ```
 
 *MedicationAdministration --> dosage:*
@@ -3004,7 +2937,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'patient', 'onsetDateTime'}
+{'onsetDateTime', 'patient'}
 ```
 
 ---
@@ -3041,7 +2974,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'deceasedBoolean', '_active', 'multipleBirthBoolean', '_deceasedBoolean'}
+{'_deceasedBoolean', '_active'}
 ```
 
 ---
@@ -3096,19 +3029,14 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Transform output keys possibly lost or renamed:</sub>**
 ```python
-{'date', 'authority'}
+{'authority', 'date'}
 ```
 
 *ImmunizationRecommendation --> recommendation:*
 
-**<sub>Keys lost during transform:</sub>**
-```python
-{'doseNumber'}
-```
-
 **<sub>Input keys possibly lost or renamed:</sub>**
 ```python
-{'date', 'protocol'}
+{'protocol', 'date', 'doseNumber'}
 ```
 
 **<sub>Transform output keys possibly lost or renamed:</sub>**
@@ -3131,13 +3059,6 @@ Examples that are not fully transformed are included in the expected folder to p
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
 {'date'}
-```
-
-*RiskAssessment --> prediction:*
-
-**<sub>Invalid keys in inputs not defined in source definition:</sub>**
-```python
-{'probabilityDecimal', 'whenRange'}
 ```
 
 ---
@@ -3235,7 +3156,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'effectiveDateTime', 'valueQuantity'}
+{'effectiveDateTime'}
 ```
 
 ---
@@ -3304,18 +3225,6 @@ Examples that are not fully transformed are included in the expected folder to p
 
 ---
 ### [audit-event-example-login.json](./input/audit-event-example-login.json)
-*AuditEvent --> source:*
-
-**<sub>Input keys possibly lost or renamed:</sub>**
-```python
-{'identifier'}
-```
-
-**<sub>Transform output keys possibly lost or renamed:</sub>**
-```python
-{'observer'}
-```
-
 *AuditEvent --> agent:*
 
 **<sub>Input keys possibly lost or renamed:</sub>**
@@ -3326,6 +3235,18 @@ Examples that are not fully transformed are included in the expected folder to p
 **<sub>Transform output keys possibly lost or renamed:</sub>**
 ```python
 {'who'}
+```
+
+*AuditEvent --> source:*
+
+**<sub>Input keys possibly lost or renamed:</sub>**
+```python
+{'identifier'}
+```
+
+**<sub>Transform output keys possibly lost or renamed:</sub>**
+```python
+{'observer'}
 ```
 
 ---
@@ -3429,7 +3350,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Input keys possibly lost or renamed:</sub>**
 ```python
-{'isBrand', 'package'}
+{'package', 'isBrand'}
 ```
 
 ---
@@ -3448,7 +3369,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Keys lost during transform:</sub>**
 ```python
-{'category', 'onset'}
+{'category'}
 ```
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
@@ -3461,6 +3382,7 @@ Examples that are not fully transformed are included in the expected folder to p
  '_status',
  '_type',
  'lastOccurence',
+ 'onset',
  'recordedDate',
  'reporter',
  'status',
@@ -3513,18 +3435,6 @@ Examples that are not fully transformed are included in the expected folder to p
 ### [valueset-required-behavior.json](./input/valueset-required-behavior.json) ✔
 ---
 ### [audit-event-example-logout.json](./input/audit-event-example-logout.json)
-*AuditEvent --> source:*
-
-**<sub>Input keys possibly lost or renamed:</sub>**
-```python
-{'identifier'}
-```
-
-**<sub>Transform output keys possibly lost or renamed:</sub>**
-```python
-{'observer'}
-```
-
 *AuditEvent --> agent:*
 
 **<sub>Input keys possibly lost or renamed:</sub>**
@@ -3535,6 +3445,18 @@ Examples that are not fully transformed are included in the expected folder to p
 **<sub>Transform output keys possibly lost or renamed:</sub>**
 ```python
 {'who'}
+```
+
+*AuditEvent --> source:*
+
+**<sub>Input keys possibly lost or renamed:</sub>**
+```python
+{'identifier'}
+```
+
+**<sub>Transform output keys possibly lost or renamed:</sub>**
+```python
+{'observer'}
 ```
 
 ---
@@ -3564,7 +3486,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'creator', 'type', 'created', 'subject'}
+{'creator', 'created', 'subject', 'type'}
 ```
 
 ---
@@ -3629,21 +3551,14 @@ Examples that are not fully transformed are included in the expected folder to p
 ```
 
 ---
-### [observation-example-f202-temperature.json](./input/observation-example-f202-temperature.json)
-*Observation:*
-
-**<sub>Invalid keys in inputs not defined in source definition:</sub>**
-```python
-{'valueQuantity'}
-```
-
+### [observation-example-f202-temperature.json](./input/observation-example-f202-temperature.json) ✔
 ---
 ### [episodeofcare-example.json](./input/episodeofcare-example.json)
 *EpisodeOfCare:*
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'fhir_comments', 'condition'}
+{'condition', 'fhir_comments'}
 ```
 
 ---
@@ -3677,7 +3592,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'_status', 'valueQuantity'}
+{'_status'}
 ```
 
 *Observation --> referenceRange:*
@@ -3688,27 +3603,13 @@ Examples that are not fully transformed are included in the expected folder to p
 ```
 
 ---
-### [patient-example-f001-pieter.json](./input/patient-example-f001-pieter.json)
-*Patient:*
-
-**<sub>Invalid keys in inputs not defined in source definition:</sub>**
-```python
-{'deceasedBoolean', 'multipleBirthBoolean'}
-```
-
+### [patient-example-f001-pieter.json](./input/patient-example-f001-pieter.json) ✔
 ---
 ### [valueset-procedure-category.json](./input/valueset-procedure-category.json) ✔
 ---
 ### [valueset-selection-behavior.json](./input/valueset-selection-behavior.json) ✔
 ---
-### [observation-example-f002-excess.json](./input/observation-example-f002-excess.json)
-*Observation:*
-
-**<sub>Invalid keys in inputs not defined in source definition:</sub>**
-```python
-{'effectivePeriod', 'valueQuantity'}
-```
-
+### [observation-example-f002-excess.json](./input/observation-example-f002-excess.json) ✔
 ---
 ### [valueset-document-relationship-type.json](./input/valueset-document-relationship-type.json) ✔
 ---
@@ -3717,7 +3618,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'patient', 'encounter', 'dateRecorded', 'onsetDateTime'}
+{'onsetDateTime', 'encounter', 'dateRecorded', 'patient'}
 ```
 
 *Condition --> evidence:*
@@ -3804,14 +3705,7 @@ Examples that are not fully transformed are included in the expected folder to p
 ```
 
 ---
-### [observation-example-f003-co2.json](./input/observation-example-f003-co2.json)
-*Observation:*
-
-**<sub>Invalid keys in inputs not defined in source definition:</sub>**
-```python
-{'effectivePeriod', 'valueQuantity'}
-```
-
+### [observation-example-f003-co2.json](./input/observation-example-f003-co2.json) ✔
 ---
 ### [valueset-c80-practice-codes.json](./input/valueset-c80-practice-codes.json) ✔
 ---
@@ -3827,12 +3721,12 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'plan', 'patient', 'investigations'}
+{'patient', 'plan', 'investigations'}
 ```
 
 *ClinicalImpression --> finding:*
 
-**<sub>Input keys possibly lost or renamed:</sub>**
+**<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
 {'item'}
 ```
@@ -3855,18 +3749,6 @@ Examples that are not fully transformed are included in the expected folder to p
 ### [valueset-search-entry-mode.json](./input/valueset-search-entry-mode.json) ✔
 ---
 ### [audit-event-example-pixQuery.json](./input/audit-event-example-pixQuery.json)
-*AuditEvent --> source:*
-
-**<sub>Input keys possibly lost or renamed:</sub>**
-```python
-{'identifier'}
-```
-
-**<sub>Transform output keys possibly lost or renamed:</sub>**
-```python
-{'observer'}
-```
-
 *AuditEvent --> agent:*
 
 **<sub>Input keys possibly lost or renamed:</sub>**
@@ -3894,6 +3776,18 @@ Examples that are not fully transformed are included in the expected folder to p
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
 {'_query'}
+```
+
+*AuditEvent --> source:*
+
+**<sub>Input keys possibly lost or renamed:</sub>**
+```python
+{'identifier'}
+```
+
+**<sub>Transform output keys possibly lost or renamed:</sub>**
+```python
+{'observer'}
 ```
 
 ---
@@ -3971,7 +3865,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Input keys possibly lost or renamed:</sub>**
 ```python
-{'date', 'explanation'}
+{'explanation', 'date'}
 ```
 
 **<sub>Transform output keys possibly lost or renamed:</sub>**
@@ -4034,11 +3928,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'effectiveDateTime',
- 'medicationReference',
- 'patient',
- 'reasonForUseCodeableConcept',
- 'wasNotTaken'}
+{'effectiveDateTime', 'patient', 'reasonForUseCodeableConcept', 'wasNotTaken'}
 ```
 
 ---
@@ -4074,7 +3964,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Input keys possibly lost or renamed:</sub>**
 ```python
-{'isBrand', 'package'}
+{'package', 'isBrand'}
 ```
 
 ---
@@ -4119,7 +4009,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'_category', '_recordedDate', 'substance', 'recordedDate'}
+{'recordedDate', '_recordedDate', '_category', 'substance'}
 ```
 
 ---
@@ -4139,7 +4029,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'fhir_comments', '_collectedDateTime', 'collectedDateTime'}
+{'collectedDateTime', 'fhir_comments', '_collectedDateTime'}
 ```
 
 ---
@@ -4212,7 +4102,7 @@ Examples that are not fully transformed are included in the expected folder to p
 
 **<sub>Invalid keys in inputs not defined in source definition:</sub>**
 ```python
-{'medicationReference', 'patient', 'wasNotTaken', 'effectiveDateTime'}
+{'effectiveDateTime', 'patient', 'wasNotTaken'}
 ```
 
 ---

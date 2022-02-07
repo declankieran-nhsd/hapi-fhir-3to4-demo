@@ -3,6 +3,8 @@ import tarfile
 from abc import ABC, abstractmethod
 from functools import reduce
 
+###### remove
+from pprint import pprint
 
 class DocumentCompare(ABC):
 
@@ -55,10 +57,24 @@ class JSONCompare(DocumentCompare):
     def _get_snapshot_elements(self, json_data) -> list:
         return [e for e in json_data['snapshot']['element']]
 
+    def _extract_choice_types(self, element):
+        path = element['id'].split('.')
+        choice_types = []
+        for c in element['type']:
+            if c['code']:
+                # Take all items in list except on the last.  With the last item, concatenate the type code after
+                # capitalising and add this to a list with the first items.
+                choice_type_updated_path = [*path[0:-1], path[-1].replace('[x]', '') + c['code'].title()]
+                choice_types.append(choice_type_updated_path)
+        return choice_types
+
     def _transform_element_list(self, elements) -> dict:
         paths = []
         for el in elements:
-            paths.append(el['id'].replace('[x]', '').split('.'))
+            if '[x]' in el['id']:
+                paths.extend(self._extract_choice_types(el))
+            else:
+                paths.append(el['id'].split('.'))
 
         dic = {}
         for p in paths:
