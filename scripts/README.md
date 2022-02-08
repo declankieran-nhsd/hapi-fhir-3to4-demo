@@ -6,7 +6,9 @@ Input and transformed files are in folders named input and expected at the base 
     `../examples`
 The StructureDefinitions for the [source](../packages/hl7.fhir.r3.core%233.0.2/package.tar) (input) and [target](../packages/hl7.fhir.r4.core%234.0.1/package.tar) (transformation) are what determines whether data was lost or is invalid and shouldn't be in the input.  
 
-The results are sectioned in terms of the hierarchy in StructureDefinition (example using Encounter below).  The script creates a dictionary to hold the definition of each resource. Each level within the (JSON) resource structure will be examined in terms of sub elements. 
+### Use of StructureDefinitions in Comparison
+
+The results are sectioned in terms of the IDs of the elements in the snapshot (FHIRPath snapshot.element.id) in a StructureDefinition (example using Encounter below).  The script creates a dictionary to hold the definition of each resource. Each level within the (JSON) resource structure will be examined in terms of sub elements. 
 
 For example:
 ```  
@@ -36,6 +38,54 @@ The root of the dictionary provides the name of the resource
 ```python  
 {(): ['Encounter'])
 ```  
+
+### Choice of types
+
+Choice of types (i.e. choice[x]), when defined within a StructureDefintion may contain many valid keys.  These keys are a concatenation of the last part of the snapshot.element.id within the StructureDefinition, and the values within snapshot.element.type.code.  Below is an example within the Communication resource:
+
+```json  
+{
+  "id": "Communication.payload.content[x]",
+  "path": "Communication.payload.content[x]",
+  "short": "Message part content",
+  "definition": "A communicated content (or for multi-part communications, one portion of the communication).",
+  "min": 1,
+  "max": "1",
+  "type": [
+    {
+      "code": "string"
+    },
+    {
+      "code": "Attachment"
+    },
+    {
+      "code": "Reference",
+      "targetProfile": "http://hl7.org/fhir/StructureDefinition/Resource"
+    }
+  ]
+}
+```  
+
+The above element will be considered to have three valid keys based on the entries in the type array, i.e.
+
+```  
+Communication.payload.contentString
+Communication.payload.contentAttachment
+Communication.payload.contentReference
+```  
+
+The script would therefore generate the following entry in the dictionary (including the key names of the other elements for Communication.payload)
+
+```python  
+  {('Communication', 'payload'): ['id', 
+                                  'extension', 
+                                  'contentString', 
+                                  'contentAttachment', 
+                                  'contentReference']}
+```
+
+### Example of full StructureDefinition dictionary
+
 Below shows how the STU3 snapshot of patient is packaged in a dictionary
 ```python  
 {(): ['Patient'],
@@ -88,6 +138,8 @@ Below shows how the STU3 snapshot of patient is packaged in a dictionary
  ('Patient', 'link'): ['id', 'extension', 'modifierExtension', 'other', 'type']}
 ```  
 
+### Format of comparison results
+
 The format of the results are sectioned based on each element definition, i.e
 
 **Filename:** **_[Input file name]_**  
@@ -116,7 +168,7 @@ The different results sections can be described using set algebra, where
 <sub>**- source_superset** = The StructureDefinition at a given level (as described above) of the source input</sub>  
 <sub>**- target_superset** = The StructureDefinition at a given level (as described above) of the transformed output data</sub>  
 
-### Result sections
+### Calculation of results within details sections
 
 #### a. Keys lost during transform
 This is defined using the following formula:
