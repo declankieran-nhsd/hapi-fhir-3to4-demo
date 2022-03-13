@@ -52,8 +52,23 @@ class JSONCompare(DocumentCompare):
         return self._compare_sub_keys(root_comparison, definition_key, input_data, source_elements_dic,
                                       transformed_data, target_elements_dic)
 
-    def _get_snapshot_elements(self, json_data) -> list:
-        return [e for e in json_data['snapshot']['element']]
+    def _remove_ignored_keys(self, input_data, ignored_keys):
+        if not ignored_keys:
+            ignored_keys = []
+
+        if input_data:
+            [input_data.pop(k) for k in ignored_keys if k in input_data.keys()]
+            return input_data
+        else:
+            return []
+
+    def _get_snapshot_elements(self, input_data) -> list:
+        if input_data and \
+                'snapshot' in input_data and \
+                'element' in input_data['snapshot']:
+            return [e for e in input_data['snapshot']['element']]
+        else:
+            return []
 
     def _extract_choice_types(self, element):
         path = element['id'].split('.')
@@ -242,12 +257,3 @@ class JSONCompare(DocumentCompare):
 
         return set(keys_to_examine).intersection(keys_to_examine_defined)
 
-
-#jc = JSONCompare()
-#comparison = jc.generate_comparison('in_allergyintolerance-example.json',
-#                                    'ex_allergyintolerance-example.json')
-#pprint(comparison)
-#jc = JSONCompare()
-#comparison = jc.generate_comparison('/home/debian11/Documents/hapi-fhir-3to4-demo/examples/input/diagnosticreport-example-f201-brainct.json',
-#                                    '/home/debian11/Documents/hapi-fhir-3to4-demo/examples/expected/diagnosticreport-example-f201-brainct.json')
-#pprint(comparison)
