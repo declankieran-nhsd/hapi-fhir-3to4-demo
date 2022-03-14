@@ -1,7 +1,15 @@
 from unittest import TestCase
 
-import pytest
+import pytest, os
 from scripts.lib.documentcompare import JSONCompare
+
+#@pytest.fixture
+#def change_test_dir(request):
+#    #os.chdir(request.fspath.dirname)
+#    os.chdir('/home/debian11/Documents/hapi-fhir-3to4-demo/scripts')
+#    yield
+#    #os.chdir(request.config.invocation_dir)
+#    os.chdir('/home/debian11/Documents/hapi-fhir-3to4-demo/tests/scripts/jsoncompare')
 
 ######################
 # DATA - Start
@@ -67,6 +75,7 @@ def invalid_key(request):
 
 
 def test__get_snapshot_elements__element_exists(data__snapshot_element):
+    #change_test_dir
     output_data = JSONCompare()._get_snapshot_elements(data__snapshot_element)
     expected_data = [
         {
@@ -92,24 +101,6 @@ def test__get_snapshot_elements__element_empty(data__snapshot_element_empty):
 
 def test__get_snapshot_elements__empty_input(input_empty):
     output_data = JSONCompare()._get_snapshot_elements(input_empty)
-    expected_data = []
-    assert output_data == expected_data
-
-
-def test__remove_ignored_keys__key_exists(data__snapshot_element):
-    output_data = JSONCompare()._remove_ignored_keys(data__snapshot_element, ['snapshot'])
-    expected_data = {"resourceType": "StructureDefinition"}
-    assert output_data == expected_data
-
-
-def test__remove_ignored_keys__invalid_key(data__snapshot_element, invalid_key):
-    output_data = JSONCompare()._remove_ignored_keys(data__snapshot_element, invalid_key)
-    expected_data = data__snapshot_element
-    assert output_data == expected_data
-
-
-def test__remove_ignored_keys__invalid_params(input_empty, invalid_key):
-    output_data = JSONCompare()._remove_ignored_keys(input_empty, invalid_key)
     expected_data = []
     assert output_data == expected_data
 
