@@ -245,7 +245,7 @@ Elements (keys) defined in the source definition will not necessarily exist in t
 **Must Transform -> SET ( ( input ∩ source_superset ) ∩ target_superset )**
 ```python  
 {
-  {'Resource'): ['LostData', 'SuccessfullyTransformed']
+  ['LostData', 'SuccessfullyTransformed']
 }
 ```  
 <br></br>
@@ -259,7 +259,7 @@ The keys that have been identified in the previous steps as being data that shou
 **Must Transform -> SET( (input ∩ source_superset) ∩ target_superset )**
 ```python  
 {
-  {'Resource'): ['LostData', 'SuccessfullyTransformed']
+  ['LostData', 'SuccessfullyTransformed']
 }
 ```  
 **Transformed -> SET( transformed )**
