@@ -71,6 +71,9 @@ class JSONCompare(DocumentCompare):
             return []
 
     def _extract_choice_types(self, element):
+        if not element:
+            return []
+
         path = element['id'].split('.')
         choice_types = []
         for c in element['type']:
@@ -82,6 +85,9 @@ class JSONCompare(DocumentCompare):
         return choice_types
 
     def _transform_element_list(self, elements) -> dict:
+        if not elements:
+            return {}
+
         paths = []
         for el in elements:
             if '[x]' in el['id']:
