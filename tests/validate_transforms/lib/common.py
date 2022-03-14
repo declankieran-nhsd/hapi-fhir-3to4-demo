@@ -11,7 +11,12 @@ from lxml import etree
 #  @return List of files from given path of type given in filetype. 
 #          Hidden files are ignored.
 def get_input_files(path, filetype):
-   return [path + filename for filename in os.listdir(path) if not filename.startswith('.') if filename.endswith(filetype)]
+   return [
+       path + filename
+       for filename in os.listdir(path)
+       if not filename.startswith('.')
+       if filename.endswith(filetype)
+   ]
 
 ## Common function for tests to call the validator_cli.  If running locally, 
 #  download the validator_cli.jar from 
@@ -25,16 +30,17 @@ def get_input_files(path, filetype):
 def call_validator_cli(input_file):
     # Get just the filename
     base_input_file_name = os.path.basename(input_file)
+    working_dir = os.path.dirname(os.path.realpath(__file__))
 
-    # The validator_cli.jar doesn't seem to work withi absolute or relative paths, 
-    # so need to move input file into cwd.  Files are cleaned up aferwards
-    shutil.copy(input_file, '.', follow_symlinks=True)
+    # The validator_cli.jar doesn't seem to work with absolute or relative paths,
+    # so need to move input file into cwd.  Files are cleaned up afterwards
+    shutil.copy(input_file, working_dir, follow_symlinks=True)
     try:
         process = subprocess.run([
                 "java",
                 "-jar",
-                "../validator_cli.jar",
-                "./" + base_input_file_name,
+                working_dir + "/../../../validator_cli.jar",
+                working_dir + "/" + base_input_file_name,
                 "-version",
                 "3.0",
                 "-to-version",
@@ -46,8 +52,8 @@ def call_validator_cli(input_file):
         stderr=subprocess.PIPE
         )
     except:
-        remove_files(['./' + base_input_file_name])
-    remove_files(['./' + base_input_file_name])
+        remove_files([working_dir + "/" + base_input_file_name])
+    remove_files([working_dir + "/" + base_input_file_name])
 
 ## Helper function to sort the transformed files and the expected output.
 #  @param input_file The path of the input file, the base of which will 

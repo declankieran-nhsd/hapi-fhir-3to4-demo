@@ -1,7 +1,9 @@
-import pytest, os, json, filecmp
-from lib import common
+import pytest
+import os
+import filecmp
+from .lib import common
 
-EXAMPLES_PATH = '../examples/input/'
+EXAMPLES_PATH = os.path.dirname(os.path.realpath(__file__)) + '/../../examples/input/'
 TRANSFORMED_PATH = '/tmp/expected-'
 
 json_examples = common.get_input_files(EXAMPLES_PATH, '.json')
