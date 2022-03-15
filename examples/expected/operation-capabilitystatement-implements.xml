@@ -104,7 +104,7 @@
     </div>
   </text>
   <url value="http://hl7.org/fhir/OperationDefinition/CapabilityStatement-implements"/>
-  <name value="Test if a server implements a client&#39;s required operations"/>
+  <name value="Test if a server implements a client's required operations"/>
   <status value="draft"/>
   <kind value="operation"/>
   <date value="2018-06-12T19:15:59+10:00"/>
@@ -121,7 +121,7 @@
   </contact>
   <description value="This operation asks the server to check that it implements all the resources, interactions, search parameters, and operations that the client provides in its capability statement. The client provides its capability statement inline, or by referring the server to the canonical URL of its capability statement"/>
   <code value="implements"/>
-  <comment value="The operation does not perform a full conformance check; in particular it does not check that the profiles align. It merely checks that the behaviors the client wishes to use are provided&#xA;&#xA;Technically, this operation is implemented as follows:&#xA; * The server&#39;s capability statement must have an entry for each resource in the client&#39;s capability statement &#xA; * The servers&#39; resource support must have matching flags for updateCreate, conditionalCreate, conditionalRead, conditionalUpdate, conditionalDelete, searchInclude, searchRevInclude&#xA; * The server capability statement must have a matching interaction for each interaction in the client capability statement (whether or not it is on a resource)&#xA; * The server must have a search parameter with matching name and definition for any search parameters in the client capability statement&#xA; * The server must have an operation definitions with a matching reference for any operations in the client capability statement&#xA;&#xA;If the capability statements match by these rules, then the return value is a 200 OK with an operation outcome that contains no issues with severity &gt;= error. If the capability statement doesn&#39;t match, the return value is a 4xx error, with an OperationOutcome with at least one issue with severity &gt;= error"/>
+  <comment value="The operation does not perform a full conformance check; in particular it does not check that the profiles align. It merely checks that the behaviors the client wishes to use are provided&#xA;&#xA;Technically, this operation is implemented as follows:&#xA; * The server's capability statement must have an entry for each resource in the client's capability statement &#xA; * The servers' resource support must have matching flags for updateCreate, conditionalCreate, conditionalRead, conditionalUpdate, conditionalDelete, searchInclude, searchRevInclude&#xA; * The server capability statement must have a matching interaction for each interaction in the client capability statement (whether or not it is on a resource)&#xA; * The server must have a search parameter with matching name and definition for any search parameters in the client capability statement&#xA; * The server must have an operation definitions with a matching reference for any operations in the client capability statement&#xA;&#xA;If the capability statements match by these rules, then the return value is a 200 OK with an operation outcome that contains no issues with severity &gt;= error. If the capability statement doesn't match, the return value is a 4xx error, with an OperationOutcome with at least one issue with severity &gt;= error"/>
   <resource value="CapabilityStatement"/>
   <system value="false"/>
   <type value="true"/>

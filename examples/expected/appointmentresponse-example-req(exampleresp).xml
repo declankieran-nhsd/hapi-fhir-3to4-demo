@@ -25,5 +25,5 @@
     <display value="Dr Adam Careful"/>
   </actor>
   <participantStatus value="tentative"/>
-  <comment value="can&#39;t we try for this time, can&#39;t do mornings"/>
+  <comment value="can't we try for this time, can't do mornings"/>
 </AppointmentResponse>

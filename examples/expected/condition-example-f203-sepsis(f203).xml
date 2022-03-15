@@ -54,7 +54,7 @@
   </subject>
   <encounter>
     <reference value="Encounter/f203"/>
-    <display value="Roel&#39;s encounter on March eleventh"/>
+    <display value="Roel's encounter on March eleventh"/>
   </encounter>
   <recordedDate value="2013-03-11"/>
   <asserter>
@@ -64,7 +64,7 @@
   <evidence>
     <detail>
       <reference value="DiagnosticReport/f202"/>
-      <display value="Diagnostic report for Roel&#39;s sepsis"/>
+      <display value="Diagnostic report for Roel's sepsis"/>
     </detail>
   </evidence>
 </Condition>

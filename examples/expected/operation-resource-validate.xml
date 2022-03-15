@@ -154,7 +154,7 @@
     <use value="in"/>
     <min value="0"/>
     <max value="1"/>
-    <documentation value="Default is &#39;no action&#39;; (e.g. general validation)"/>
+    <documentation value="Default is 'no action'; (e.g. general validation)"/>
     <type value="code"/>
     <binding>
       <strength value="required"/>

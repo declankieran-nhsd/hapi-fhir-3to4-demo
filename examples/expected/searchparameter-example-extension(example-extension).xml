@@ -19,8 +19,8 @@
   <code value="part-agree"/>
   <base value="Patient"/>
   <type value="reference"/>
-  <expression value="DocumentReference.extension(&#39;http://example.org/fhir/StructureDefinition/participation-agreement&#39;)"/>
-  <xpath value="f:DocumentReference/f:extension[@url=&#39;http://example.org/fhir/StructureDefinition/participation-agreement&#39;]"/>
+  <expression value="DocumentReference.extension('http://example.org/fhir/StructureDefinition/participation-agreement')"/>
+  <xpath value="f:DocumentReference/f:extension[@url='http://example.org/fhir/StructureDefinition/participation-agreement']"/>
   <xpathUsage value="normal"/>
   <target value="DocumentReference"/>
 </SearchParameter>

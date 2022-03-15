@@ -139,7 +139,7 @@
       <value value="fhir@lists.hl7.org"/>
     </telecom>
   </contact>
-  <description value="Generates a [Questionnaire](questionnaire.html) instance  based on a specified [StructureDefinition](structuredefinition.html), creating questions for each core element or extension element found in the [StructureDefinition](structuredefinition.html).    If the operation is not called at the instance level, one of the *identifier*, *profile* or *url* &#39;in&#39; parameters must be provided. If more than one is specified, servers may raise an error or may resolve with the parameter of their choice. If called at the instance level, these parameters will be ignored. The response will contain a [Questionnaire](questionnaire.html) instance based on the specified [StructureDefinition](structuredefinition.html) and/or an [OperationOutcome](operationoutcome.html) resource with errors or warnings.  Nested groups are used to handle complex structures and data types.  If the &#39;supportedOnly&#39; parameter is set to true, only those elements marked as &quot;must support&quot; will be included.  This operation is intended to enable auto-generation of simple interfaces for arbitrary profiles.  The &#39;questionnaire&#39; approach to data entry has limitations that will make it less optimal than custom-defined interfaces.  However, this function may be useful for simple applications or for systems that wish to support &quot;non-core&quot; resources with minimal development effort."/>
+  <description value="Generates a [Questionnaire](questionnaire.html) instance  based on a specified [StructureDefinition](structuredefinition.html), creating questions for each core element or extension element found in the [StructureDefinition](structuredefinition.html).    If the operation is not called at the instance level, one of the *identifier*, *profile* or *url* 'in' parameters must be provided. If more than one is specified, servers may raise an error or may resolve with the parameter of their choice. If called at the instance level, these parameters will be ignored. The response will contain a [Questionnaire](questionnaire.html) instance based on the specified [StructureDefinition](structuredefinition.html) and/or an [OperationOutcome](operationoutcome.html) resource with errors or warnings.  Nested groups are used to handle complex structures and data types.  If the 'supportedOnly' parameter is set to true, only those elements marked as &quot;must support&quot; will be included.  This operation is intended to enable auto-generation of simple interfaces for arbitrary profiles.  The 'questionnaire' approach to data entry has limitations that will make it less optimal than custom-defined interfaces.  However, this function may be useful for simple applications or for systems that wish to support &quot;non-core&quot; resources with minimal development effort."/>
   <code value="questionnaire"/>
   <comment value="**Open Issue**: Ideally, extensions should be populated in the generated [Questionnaire](questionnaire.html) that will support taking [QuestionnaireResponse](questionnaireresponse.html) resources generated from the Questionnaire and turning them back into the appropriate resources."/>
   <resource value="StructureDefinition"/>
@@ -151,7 +151,7 @@
     <use value="in"/>
     <min value="0"/>
     <max value="1"/>
-    <documentation value="A logical profile identifier (i.e. &#39;StructureDefinition.identifier&#39;&#39;). The server must know the profile or be able to retrieve it from other known repositories."/>
+    <documentation value="A logical profile identifier (i.e. 'StructureDefinition.identifier''). The server must know the profile or be able to retrieve it from other known repositories."/>
     <type value="uri"/>
   </parameter>
   <parameter>
@@ -168,7 +168,7 @@
     <use value="in"/>
     <min value="0"/>
     <max value="1"/>
-    <documentation value="The profile&#39;s official URL (i.e. &#39;StructureDefinition.url&#39;). The server must know the profile or be able to retrieve it from other known repositories."/>
+    <documentation value="The profile's official URL (i.e. 'StructureDefinition.url'). The server must know the profile or be able to retrieve it from other known repositories."/>
     <type value="uri"/>
   </parameter>
   <parameter>
@@ -176,7 +176,7 @@
     <use value="in"/>
     <min value="0"/>
     <max value="1"/>
-    <documentation value="If true, the questionnaire will only include those elements marked as &quot;mustSupport=&#39;true&#39;&quot; in the StructureDefinition."/>
+    <documentation value="If true, the questionnaire will only include those elements marked as &quot;mustSupport='true'&quot; in the StructureDefinition."/>
     <type value="boolean"/>
   </parameter>
   <parameter>

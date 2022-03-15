@@ -56,7 +56,7 @@
     <site value="Development"/>
     <observer>
       <identifier>
-        <value value="Grahame&#39;s Laptop"/>
+        <value value="Grahame's Laptop"/>
       </identifier>
     </observer>
     <type>
@@ -93,6 +93,6 @@
       <code value="6"/>
       <display value="Access / Use"/>
     </lifecycle>
-    <name value="Grahame&#39;s Laptop"/>
+    <name value="Grahame's Laptop"/>
   </entity>
 </AuditEvent>

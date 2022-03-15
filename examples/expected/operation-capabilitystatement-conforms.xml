@@ -124,7 +124,7 @@
     </div>
   </text>
   <url value="http://hl7.org/fhir/OperationDefinition/CapabilityStatement-conforms"/>
-  <name value="Test if a server implements a client&#39;s required operations"/>
+  <name value="Test if a server implements a client's required operations"/>
   <status value="draft"/>
   <kind value="operation"/>
   <date value="2018-06-12T19:15:59+10:00"/>
@@ -151,7 +151,7 @@
     <use value="in"/>
     <min value="0"/>
     <max value="1"/>
-    <documentation value="The canonical URL for the left-hand system&#39;s capability statement"/>
+    <documentation value="The canonical URL for the left-hand system's capability statement"/>
     <type value="uri"/>
   </parameter>
   <parameter>
@@ -159,7 +159,7 @@
     <use value="in"/>
     <min value="0"/>
     <max value="1"/>
-    <documentation value="The canonical URL for the right-hand system&#39;s capability statement"/>
+    <documentation value="The canonical URL for the right-hand system's capability statement"/>
     <type value="uri"/>
   </parameter>
   <parameter>
@@ -167,7 +167,7 @@
     <use value="in"/>
     <min value="0"/>
     <max value="1"/>
-    <documentation value="What kind of comparison to perform - server to server, or client to server (use the codes &#39;server/server&#39; or &#39;client/server&#39;)"/>
+    <documentation value="What kind of comparison to perform - server to server, or client to server (use the codes 'server/server' or 'client/server')"/>
     <type value="code"/>
   </parameter>
   <parameter>

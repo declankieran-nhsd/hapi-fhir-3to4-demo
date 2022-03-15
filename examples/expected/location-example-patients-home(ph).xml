@@ -5,14 +5,14 @@
     <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml">Patient's Home</div>
   </text>
   <status value="active"/>
-  <name value="Patient&#39;s Home"/>
-  <description value="Patient&#39;s Home"/>
+  <name value="Patient's Home"/>
+  <description value="Patient's Home"/>
   <mode value="kind"/>
   <type>
     <coding>
       <system value="http://hl7.org/fhir/v3/RoleCode"/>
       <code value="PTRES"/>
-      <display value="Patient&#39;s Residence"/>
+      <display value="Patient's Residence"/>
     </coding>
   </type>
   <physicalType>
