@@ -1,5 +1,6 @@
 import json
 import tarfile
+import os
 from abc import ABC, abstractmethod
 from functools import reduce
 
@@ -18,16 +19,17 @@ class JSONCompare(DocumentCompare):
     # NOTE: If the packages aren't tar-ed and are available on disk at ~/.fhir for example, this runs in a few seconds.
     # The packages are included in the repo so there is minimal config needed to run it out of the box
     def __init__(self):
+        self.ROOT_DIR = os.path.dirname(os.path.realpath(__file__)) + '/../../'
         self.IGNORED_KEYS = ['resourceType']
-        self.pkg_r4 = tarfile.open('../packages/hl7.fhir.r4.core#4.0.1/package.tar')
-        self.pkg_r3 = tarfile.open('../packages/hl7.fhir.r3.core#3.0.2/package.tar')
+        self.pkg_r4 = tarfile.open(self.ROOT_DIR + 'packages/hl7.fhir.r4.core#4.0.1/package.tar')
+        self.pkg_r3 = tarfile.open(self.ROOT_DIR + 'packages/hl7.fhir.r3.core#3.0.2/package.tar')
 
     def generate_comparison(self, input_file, transformed_file) -> dict:
         input_data = json.load(open(input_file))
         resource_type = input_data.get('resourceType')
 
         # Remove keys not defined by default in StructureDefinitions.  TODO find an exhaustive list of this
-        [input_data.pop(k) for k in self.IGNORED_KEYS]
+        input_data = self._remove_ignored_keys(input_data, self.IGNORED_KEYS)
 
         transformed_data = json.load(open(transformed_file))
 
@@ -139,7 +141,7 @@ class JSONCompare(DocumentCompare):
             input_data = reduce(lambda a, b: {**a, **b}, input_data)
         if isinstance(transformed_data, list):
             transformed_data = reduce(lambda a, b: {**a, **b}, transformed_data)
-        #print(input_data)
+
         for k in comparison[definition_key]['KeysToExamine']:
             if definition_key + (k,) in comparison.keys():
                 if comparison[definition_key + (k,)]['KeysToExamine']:
@@ -159,7 +161,7 @@ class JSONCompare(DocumentCompare):
 
         return comparison
 
-    def _is_complex_obj(self, data) -> bool:
+    def _is_or_contains_dict(self, data) -> bool:
         if isinstance(data, dict):
             return True
         if isinstance(data, list):  # Ignore list of simple types
@@ -253,9 +255,9 @@ class JSONCompare(DocumentCompare):
         keys_to_examine = []
         if isinstance(input_data, list):
             for d in input_data:
-                keys_to_examine.extend([k for k in valid_keys_to_examine if self._is_complex_obj(d.get(k))])
+                keys_to_examine.extend([k for k in valid_keys_to_examine if self._is_or_contains_dict(d.get(k))])
         elif isinstance(input_data, dict):
-            keys_to_examine = [k for k in valid_keys_to_examine if self._is_complex_obj(input_data.get(k))]
+            keys_to_examine = [k for k in valid_keys_to_examine if self._is_or_contains_dict(input_data.get(k))]
 
         keys_to_examine_defined = [k[len(definition_key)]
                                    for k in source_dic.keys()
