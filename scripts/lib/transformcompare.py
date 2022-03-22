@@ -26,7 +26,19 @@ class TransformCompare:
 
         self.set_comparator(input_file_extension)
 
-        return self.documentcompare.generate_comparison(input_file, transformed_file)
+        comparison = self.documentcompare.generate_comparison(input_file, transformed_file)
+
+        # Order comparisons so report output is the same on each run, i.e. diff-able
+        return self.order_dict(comparison)
+
+    def order_dict(self, dictionary):
+        result = {}
+        for k, v in sorted(dictionary.items()):
+            if isinstance(v, dict):
+                result[k] = self.order_dict(v)
+            else:
+                result[k] = sorted(v)
+        return result
 
     def count_flagged(self, comparisons):
         flagged = 0

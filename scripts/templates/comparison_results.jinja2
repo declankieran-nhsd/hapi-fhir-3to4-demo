@@ -1,6 +1,6 @@
 # Comparison of JSON transforms
 ## Overview
-A walk-through of how these results are generated is given in the [directory](../scripts/README.md) of the [script](../script/generate_comparison.py) that generates these results.  The [input folder](./input) contains the data to be transformed, and the [expected folder](./expected) contains the transformed data.
+A walk-through of how these results are generated is given in the [directory](../scripts) of the [script](../scripts/generate_comparison.py) that generates these results.  The [input folder](./input) contains the data to be transformed, and the [expected folder](./expected) contains the transformed data.
 
 Examples that are not fully transformed are included in the expected folder to provide expected output in the validate transforms tests that run as part a [CI pipeline](../.github/workflows/validate-transforms.yml) testing the latest version of the validator_cli.
 
