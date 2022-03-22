@@ -15,8 +15,7 @@ def render_results():
     # Perform comparison with input and transformed (expected)
     tc = TransformCompare()
     comparisons = dict()
-    #for f in sorted(examples_json_files):
-    for f in sorted(['/home/debian11/Documents/hapi-fhir-3to4-demo/examples/input/encounter-example-xcda.json']):
+    for f in sorted(examples_json_files):
         comparisons |= {f: tc.compare_transform(f, f.replace('input/', 'expected/'))}
 
     # Results summary stats

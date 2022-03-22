@@ -1,4 +1,5 @@
-from lib.documentcompare import DocumentCompare, JSONCompare
+from .documentcompare import DocumentCompare
+from .jsoncompare import JSONCompare
 import os.path
 
 

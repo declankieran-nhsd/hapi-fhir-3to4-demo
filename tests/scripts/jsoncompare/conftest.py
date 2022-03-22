@@ -1,23 +1,9 @@
 import pytest
 from pytest_lazyfixture import lazy_fixture
-import tarfile
 import os
 import json
 
 ROOT_DIR = os.path.dirname(os.path.realpath(__file__)) + '/../../../'
-
-
-@pytest.fixture(params=[
-    ('encounter-example-xcda.json', {'patient', 'resourceType'}),
-    ('encounter-example-f203-20130311.json', {'patient', 'resourceType', '_class'})
-])
-def fixture_get_encounter_examples(request):
-    return (json.load(open(ROOT_DIR + 'examples/input/' + request.param[0])), request.param[1])
-
-
-######################
-# Common DATA
-######################
 
 
 @pytest.fixture
@@ -151,6 +137,7 @@ def data__contains_dict(request):
 def data__does_not_contain_dict(request):
     return request.param
 
+
 @pytest.fixture()
 def fixture_get_encounter_source_dic():
     return {
@@ -158,35 +145,35 @@ def fixture_get_encounter_source_dic():
             'Encounter'
         ],
         ('Encounter',): [
-         'id',
-         'meta',
-         'implicitRules',
-         'language',
-         'text',
-         'contained',
-         'extension',
-         'modifierExtension',
-         'identifier',
-         'status',
-         'statusHistory',
-         'class',
-         'classHistory',
-         'type',
-         'priority',
-         'subject',
-         'episodeOfCare',
-         'incomingReferral',
-         'participant',
-         'appointment',
-         'period',
-         'length',
-         'reason',
-         'diagnosis',
-         'account',
-         'hospitalization',
-         'location',
-         'serviceProvider',
-         'partOf'
+            'id',
+            'meta',
+            'implicitRules',
+            'language',
+            'text',
+            'contained',
+            'extension',
+            'modifierExtension',
+            'identifier',
+            'status',
+            'statusHistory',
+            'class',
+            'classHistory',
+            'type',
+            'priority',
+            'subject',
+            'episodeOfCare',
+            'incomingReferral',
+            'participant',
+            'appointment',
+            'period',
+            'length',
+            'reason',
+            'diagnosis',
+            'account',
+            'hospitalization',
+            'location',
+            'serviceProvider',
+            'partOf'
         ],
         ('Encounter', 'statusHistory'): [
             'id',
@@ -240,3 +227,104 @@ def fixture_get_encounter_source_dic():
             'status',
             'period'
         ]}
+
+
+@pytest.fixture()
+def fixture_get_encounter_target_dic():
+    return {
+        (): [
+            'Encounter'
+        ],
+        ('Encounter',): ['id', 'meta', 'implicitRules', 'language', 'text', 'contained', 'extension',
+                         'modifierExtension',
+                         'identifier', 'status', 'statusHistory', 'class', 'classHistory', 'type', 'serviceType',
+                         'priority',
+                         'subject', 'episodeOfCare', 'basedOn', 'participant', 'appointment', 'period', 'length',
+                         'reasonCode',
+                         'reasonReference', 'diagnosis', 'account', 'hospitalization', 'location', 'serviceProvider',
+                         'partOf'],
+        ('Encounter', 'statusHistory'): ['id', 'extension', 'modifierExtension', 'status', 'period'],
+        ('Encounter', 'classHistory'): ['id', 'extension', 'modifierExtension', 'class', 'period'],
+        ('Encounter', 'participant'): ['id', 'extension', 'modifierExtension', 'type', 'period', 'individual'],
+        ('Encounter', 'diagnosis'): ['id', 'extension', 'modifierExtension', 'condition', 'use', 'rank'],
+        ('Encounter', 'hospitalization'): ['id', 'extension', 'modifierExtension', 'preAdmissionIdentifier', 'origin',
+                                           'admitSource', 'reAdmission', 'dietPreference', 'specialCourtesy',
+                                           'specialArrangement', 'destination', 'dischargeDisposition'],
+        ('Encounter', 'location'): ['id', 'extension', 'modifierExtension', 'location', 'status', 'physicalType',
+                                    'period']}
+
+
+@pytest.fixture(params=[
+    ('encounter-example-xcda.json', {'patient', 'resourceType'}),
+    ('encounter-example-f203-20130311.json', {'patient', 'resourceType', '_class'})
+])
+def fixture_get_invalid_key_examples__encounter(request):
+    return (json.load(open(ROOT_DIR + 'examples/input/' + request.param[0])), request.param[1])
+
+
+@pytest.fixture(params=[
+    ('encounter-example-xcda.json', {'text', 'participant', 'status', 'class', 'reason', 'identifier'}),
+    ('encounter-example-f203-20130311.json',
+     {'serviceProvider', 'type', 'reason', 'hospitalization', 'period', 'status', 'class', 'participant', 'text',
+      'priority', 'identifier'})
+])
+def fixture_get_valid_key_examples__encounter(request):
+    return (json.load(open(ROOT_DIR + 'examples/input/' + request.param[0])), request.param[1])
+
+
+@pytest.fixture(params=[
+    ('encounter-example-xcda.json', {'class'}),
+    ('encounter-example-f203-20130311.json', {'class'})
+])
+def fixture_get_lost_key_examples__encounter(request):
+    return (
+        json.load(open(ROOT_DIR + 'examples/input/' + request.param[0])),
+        json.load(open(ROOT_DIR + 'examples/expected/' + request.param[0])),
+        request.param[1]
+    )
+
+@pytest.fixture(params=[
+    ('encounter-example-xcda.json', {'text', 'class', 'status', 'identifier', 'participant'}),
+    ('encounter-example-f203-20130311.json', {'priority', 'class', 'type', 'text', 'period', 'hospitalization', 'serviceProvider', 'status', 'identifier', 'participant'})
+])
+def fixture_get_lost_key_examples__empty_transform__encounter(request):
+    return (
+        json.load(open(ROOT_DIR + 'examples/input/' + request.param[0])),
+        json.load(open(ROOT_DIR + 'examples/expected/' + request.param[0])),
+        request.param[1]
+    )
+
+
+@pytest.fixture(params=[
+    ('encounter-example-xcda.json', ({'reason'}, {'reasonCode'})),
+    ('encounter-example-f203-20130311.json', ({'reason'}, {'reasonCode'}))
+])
+def fixture_get_renamed_keys_examples__encounter(request):
+    return (
+        json.load(open(ROOT_DIR + 'examples/input/' + request.param[0])),
+        json.load(open(ROOT_DIR + 'examples/expected/' + request.param[0])),
+        request.param[1]
+    )
+
+
+@pytest.fixture(params=[
+    (
+            'encounter-example-xcda.json',
+            {'participant', 'identifier', 'status', 'reason', 'text', 'class'},
+            {'reason'},
+            set()
+    ),
+    (
+            'encounter-example-f203-20130311.json',
+            {'status', 'type', 'identifier', 'participant', 'serviceProvider', 'reason', 'period', 'class', 'hospitalization', 'text', 'priority'},
+            {'reason'},
+            set()
+    )
+])
+def fixture_get_keys_to_examine_examples__encounter(request):
+    return (
+        json.load(open(ROOT_DIR + 'examples/input/' + request.param[0])),
+        request.param[1],
+        request.param[2],
+        request.param[3],
+    )

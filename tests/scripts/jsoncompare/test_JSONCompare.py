@@ -1,8 +1,8 @@
 import pytest
-from _pytest import monkeypatch
-from unittest.mock import Mock
+from unittest import mock
 
-from scripts.lib.documentcompare import JSONCompare
+# Module to test
+from scripts.lib.jsoncompare import JSONCompare
 
 
 # Test _remove_ignored_keys
@@ -90,7 +90,7 @@ def test__is_or_contains_dict__empty_input(data__input_empty):
     assert output_data == expected_data
 
 
-#Test _get_dict_from_list
+# Test _get_dict_from_list
 def test__get_dict_from_list__contains_a_dict(data__list_contains_dict):
     output_data = JSONCompare()._search_list_for_dict(data__list_contains_dict)
     expected_data = True
@@ -109,7 +109,7 @@ def test__get_dict_from_list__empty_input(data__input_empty):
     assert output_data == expected_data
 
 
-#Test _strip_list
+# Test _strip_list
 def test__strip_list__list_contains_dict(data__list_contains_dict__input_and_output):
     output_data = JSONCompare()._strip_list(data__list_contains_dict__input_and_output[0])
     expected_data = data__list_contains_dict__input_and_output[1]
@@ -122,18 +122,24 @@ def test__strip_list__empty_input(data__input_empty):
     assert output_data == expected_data
 
 
-#Test _get_invalid_keys
-
-def test__get_invalid_keys__valid(fixture_get_encounter_examples, fixture_get_encounter_source_dic):
-    output_data = JSONCompare()._get_invalid_keys(('Encounter',), fixture_get_encounter_examples[0], fixture_get_encounter_source_dic)
-    expected_data = fixture_get_encounter_examples[1]
+# Test _get_invalid_keys
+def test__get_invalid_keys__valid(fixture_get_invalid_key_examples__encounter, fixture_get_encounter_source_dic):
+    output_data = JSONCompare()._get_invalid_keys(('Encounter',), fixture_get_invalid_key_examples__encounter[0], fixture_get_encounter_source_dic)
+    expected_data = fixture_get_invalid_key_examples__encounter[1]
     assert output_data == expected_data
 
 
-#def test__get_invalid_keys__strip_list_called(mocker):
-#    mocked_fn = mocker.patch('JSONCompare._strip_list')
-#    JSONCompare()._get_invalid_keys((), {'simple': 'dict'}, {(): {'simple': 'dict'}})
-#    mocked_fn.assert_called_once_with({'simple': 'dict'})
+def test__get_invalid_keys__invalid_key(fixture_get_invalid_key_examples__encounter, fixture_get_encounter_source_dic):
+    with pytest.raises(ValueError) as exception_info:
+        output_data = JSONCompare()._get_invalid_keys(('Invalid key',), fixture_get_invalid_key_examples__encounter[0],
+                                                      fixture_get_encounter_source_dic)
+    assert "is not a key in the source definition" in str(exception_info.value)
+
+
+@mock.patch('scripts.lib.jsoncompare.JSONCompare._strip_list')
+def test__get_invalid_keys__strip_list_called(mocked, data__list_contains_dict):
+    JSONCompare()._get_invalid_keys((), data__list_contains_dict, {(): {'dummy': 'data'}})
+    mocked.assert_called_once_with(data__list_contains_dict)
 
 
 def test__get_invalid_keys__empty_input_data(data__input_empty, fixture_get_encounter_source_dic):
@@ -142,8 +148,235 @@ def test__get_invalid_keys__empty_input_data(data__input_empty, fixture_get_enco
     assert output_data == expected_data
 
 
-def test__get_invalid_keys__empty_source_dic(fixture_get_encounter_examples, data__input_empty):
+def test__get_invalid_keys__empty_source_dic(fixture_get_invalid_key_examples__encounter, data__input_empty):
     with pytest.raises(ValueError) as exception_info:
-        output_data = JSONCompare()._get_invalid_keys(('Encounter',), fixture_get_encounter_examples[0], data__input_empty)
+        output_data = JSONCompare()._get_invalid_keys(('Encounter',), fixture_get_invalid_key_examples__encounter[0], data__input_empty)
+    assert "definition is empty" in str(exception_info.value)
 
-    assert "Source definition is empty" in str(exception_info.value)
+
+# Test _get_valid_keys
+def test__get_valid_keys__valid(fixture_get_valid_key_examples__encounter, fixture_get_encounter_source_dic):
+    output_data = JSONCompare()._get_valid_keys(('Encounter',), fixture_get_valid_key_examples__encounter[0], fixture_get_encounter_source_dic)
+    expected_data = fixture_get_valid_key_examples__encounter[1]
+    assert output_data == expected_data
+
+
+def test__get_valid_keys__invalid_key(fixture_get_valid_key_examples__encounter, fixture_get_encounter_source_dic):
+    with pytest.raises(ValueError) as exception_info:
+        output_data = JSONCompare()._get_valid_keys(('Invalid key',), fixture_get_valid_key_examples__encounter[0],
+                                                    fixture_get_encounter_source_dic)
+    assert "is not a key in the source definition" in str(exception_info.value)
+
+
+@mock.patch('scripts.lib.jsoncompare.JSONCompare._strip_list')
+def test__get_valid_keys__strip_list_called(mocked, data__list_contains_dict):
+    JSONCompare()._get_valid_keys((), data__list_contains_dict, {(): {'dummy': 'data'}})
+    mocked.assert_called_once_with(data__list_contains_dict)
+
+
+def test__get_valid_keys__empty_input_data(data__input_empty, fixture_get_encounter_source_dic):
+    output_data = JSONCompare()._get_valid_keys(('Encounter',), data__input_empty, fixture_get_encounter_source_dic)
+    expected_data = set()
+    assert output_data == expected_data
+
+
+def test__get_valid_keys__empty_source_dic(fixture_get_valid_key_examples__encounter, data__input_empty):
+    with pytest.raises(ValueError) as exception_info:
+        output_data = JSONCompare()._get_valid_keys(('Encounter',), fixture_get_valid_key_examples__encounter[0], data__input_empty)
+    assert "definition is empty" in str(exception_info.value)
+
+
+# Test _get_lost_keys
+def test__get_lost_keys__valid(fixture_get_lost_key_examples__encounter,
+                               fixture_get_encounter_source_dic,
+                               fixture_get_encounter_target_dic):
+    output_data = JSONCompare()._get_lost_keys(('Encounter',),
+                                               fixture_get_lost_key_examples__encounter[0],
+                                               fixture_get_encounter_source_dic,
+                                               fixture_get_lost_key_examples__encounter[1],
+                                               fixture_get_encounter_target_dic)
+    expected_data = fixture_get_lost_key_examples__encounter[2]
+    assert output_data == expected_data
+
+
+def test__get_lost_keys__invalid_key(fixture_get_lost_key_examples__encounter,
+                                     fixture_get_encounter_source_dic,
+                                     fixture_get_encounter_target_dic):
+    with pytest.raises(ValueError) as exception_info:
+        output_data = JSONCompare()._get_lost_keys(('Invalid key',),
+                                                   fixture_get_lost_key_examples__encounter[0],
+                                                   fixture_get_encounter_source_dic,
+                                                   fixture_get_lost_key_examples__encounter[1],
+                                                   fixture_get_encounter_target_dic)
+    assert "is not a key in the source definition" in str(exception_info.value)
+
+
+@mock.patch('scripts.lib.jsoncompare.JSONCompare._strip_list')
+def test__get_lost_keys__strip_list_called(mocked, data__list_contains_dict):
+    JSONCompare()._get_lost_keys((), data__list_contains_dict, {(): {'dummy': 'data'}}, data__list_contains_dict, {(): {'dummy': 'data'}})
+    assert 2 == mocked.call_count
+
+
+def test__get_lost_keys__empty_input_data(data__input_empty,
+                               fixture_get_encounter_source_dic,
+                               fixture_get_lost_key_examples__encounter,
+                               fixture_get_encounter_target_dic):
+    output_data = JSONCompare()._get_lost_keys(('Encounter',),
+                                               data__input_empty,
+                                               fixture_get_encounter_source_dic,
+                                               fixture_get_lost_key_examples__encounter[1],
+                                               fixture_get_encounter_target_dic)
+    expected_data = set()
+    assert output_data == expected_data
+
+
+def test__get_lost_keys__empty_source_dic(fixture_get_lost_key_examples__encounter,
+                                           data__input_empty,
+                                           fixture_get_encounter_target_dic):
+    with pytest.raises(ValueError) as exception_info:
+        output_data = JSONCompare()._get_lost_keys(('Encounter',),
+                                                   fixture_get_lost_key_examples__encounter[0],
+                                                   data__input_empty,
+                                                   fixture_get_lost_key_examples__encounter[1],
+                                                   fixture_get_encounter_target_dic)
+    assert "definition is empty" in str(exception_info.value)
+
+
+def test__get_lost_keys__empty_transformed_data(fixture_get_lost_key_examples__empty_transform__encounter,
+                                                fixture_get_encounter_source_dic,
+                                                data__input_empty,
+                                                fixture_get_encounter_target_dic):
+    output_data = JSONCompare()._get_lost_keys(('Encounter',),
+                                               fixture_get_lost_key_examples__empty_transform__encounter[0],
+                                               fixture_get_encounter_source_dic,
+                                               data__input_empty,
+                                               fixture_get_encounter_target_dic)
+    expected_data = fixture_get_lost_key_examples__empty_transform__encounter[2]
+    assert output_data == expected_data
+
+
+def test__get_lost_keys__empty_data(data__input_empty,
+                                    fixture_get_encounter_source_dic,
+                                    fixture_get_encounter_target_dic):
+    output_data = JSONCompare()._get_lost_keys(('Encounter',),
+                                               data__input_empty,
+                                               fixture_get_encounter_source_dic,
+                                               data__input_empty,
+                                               fixture_get_encounter_target_dic)
+    expected_data = set()
+    assert output_data == expected_data
+
+
+def test__get_lost_keys__empty_dic(fixture_get_lost_key_examples__encounter,
+                                   data__input_empty):
+    with pytest.raises(ValueError) as exception_info:
+        output_data = JSONCompare()._get_lost_keys(('Encounter',),
+                                                   fixture_get_lost_key_examples__encounter[0],
+                                                   data__input_empty,
+                                                   fixture_get_lost_key_examples__encounter[1],
+                                                   data__input_empty)
+    assert "definition is empty" in str(exception_info.value)
+
+
+# Test _get_renamed_keys
+def test__get_renamed_keys__valid(fixture_get_renamed_keys_examples__encounter,
+                                  fixture_get_encounter_source_dic,
+                                  fixture_get_encounter_target_dic):
+    output_data = JSONCompare()._get_renamed_keys(('Encounter',),
+                                                  fixture_get_renamed_keys_examples__encounter[0],
+                                                  fixture_get_encounter_source_dic,
+                                                  fixture_get_renamed_keys_examples__encounter[1],
+                                                  fixture_get_encounter_target_dic)
+    expected_data = fixture_get_renamed_keys_examples__encounter[2]
+    assert output_data == expected_data
+
+
+def test__get_renamed_keys__invalid_key(fixture_get_renamed_keys_examples__encounter,
+                                        fixture_get_encounter_source_dic,
+                                        fixture_get_encounter_target_dic):
+    with pytest.raises(ValueError) as exception_info:
+        output_data = JSONCompare()._get_renamed_keys(('Invalid key',),
+                                                      fixture_get_renamed_keys_examples__encounter[0],
+                                                      fixture_get_encounter_source_dic,
+                                                      fixture_get_renamed_keys_examples__encounter[1],
+                                                      fixture_get_encounter_target_dic)
+    assert "is not a key in the source definition" in str(exception_info.value)
+
+
+@mock.patch('scripts.lib.jsoncompare.JSONCompare._strip_list')
+def test__get_renamed_keys__strip_list_called(mocked, data__list_contains_dict):
+    JSONCompare()._get_renamed_keys((), data__list_contains_dict, {(): {'dummy': 'data'}}, data__list_contains_dict, {(): {'dummy': 'data'}})
+    mocked.assert_called_once_with(data__list_contains_dict)
+
+
+def test__get_renamed_keys__empty_input_data(data__input_empty,
+                                             fixture_get_encounter_source_dic,
+                                             fixture_get_renamed_keys_examples__encounter,
+                                             fixture_get_encounter_target_dic):
+    output_data = JSONCompare()._get_renamed_keys(('Encounter',),
+                                                  data__input_empty,
+                                                  fixture_get_encounter_source_dic,
+                                                  fixture_get_renamed_keys_examples__encounter[1],
+                                                  fixture_get_encounter_target_dic)
+    expected_data = (set(), fixture_get_renamed_keys_examples__encounter[2][1])
+    assert output_data == expected_data
+
+
+def test__get_renamed_keys__empty_source_dic(fixture_get_renamed_keys_examples__encounter,
+                                             data__input_empty,
+                                             fixture_get_encounter_target_dic):
+    with pytest.raises(ValueError) as exception_info:
+        output_data = JSONCompare()._get_renamed_keys(('Encounter',),
+                                                      fixture_get_renamed_keys_examples__encounter[0],
+                                                      data__input_empty,
+                                                      fixture_get_renamed_keys_examples__encounter[1],
+                                                      fixture_get_encounter_target_dic)
+    assert "is not a key in the source definition" in str(exception_info.value)
+
+
+def test__get_renamed_keys__empty_transformed_data(fixture_get_renamed_keys_examples__encounter,
+                                                   fixture_get_encounter_source_dic,
+                                                   data__input_empty,
+                                                   fixture_get_encounter_target_dic):
+    output_data = JSONCompare()._get_renamed_keys(('Encounter',),
+                                                  fixture_get_renamed_keys_examples__encounter[0],
+                                                  fixture_get_encounter_source_dic,
+                                                  data__input_empty,
+                                                  fixture_get_encounter_target_dic)
+    expected_data = (fixture_get_renamed_keys_examples__encounter[2][0], set())
+    assert output_data == expected_data
+
+
+def test__get_renamed_keys__empty_data(data__input_empty,
+                                       fixture_get_encounter_source_dic,
+                                       fixture_get_encounter_target_dic):
+    output_data = JSONCompare()._get_renamed_keys(('Encounter',),
+                                                  data__input_empty,
+                                                  fixture_get_encounter_source_dic,
+                                                  data__input_empty,
+                                                  fixture_get_encounter_target_dic)
+    expected_data = (set(), set())
+    assert output_data == expected_data
+
+
+def test__get_renamed_keys__empty_dic(fixture_get_renamed_keys_examples__encounter,
+                                      data__input_empty):
+    with pytest.raises(ValueError) as exception_info:
+        output_data = JSONCompare()._get_renamed_keys(('Encounter',),
+                                                      fixture_get_renamed_keys_examples__encounter[0],
+                                                      data__input_empty,
+                                                      fixture_get_renamed_keys_examples__encounter[1],
+                                                      data__input_empty)
+    assert "is not a key in the source definition" in str(exception_info.value)
+
+
+# Test _get_renamed_keys
+def test__get_keys_to_examine__valid(fixture_get_keys_to_examine_examples__encounter,
+                                     fixture_get_encounter_source_dic):
+    output_data = JSONCompare()._get_keys_to_examine('Encounter',
+                                                     fixture_get_keys_to_examine_examples__encounter[0],
+                                                     fixture_get_keys_to_examine_examples__encounter[1],
+                                                     fixture_get_keys_to_examine_examples__encounter[2],
+                                                     fixture_get_encounter_source_dic)
+    expected_data = fixture_get_keys_to_examine_examples__encounter[3]
+    assert output_data == expected_data
