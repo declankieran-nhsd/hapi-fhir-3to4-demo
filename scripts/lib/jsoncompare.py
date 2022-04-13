@@ -161,7 +161,7 @@ class JSONCompare(DocumentCompare):
 
         return False
 
-    def _search_list_for_dict(self, x) -> dict:
+    def _search_list_for_dict(self, x) -> bool:
         if not x:
             return False
 

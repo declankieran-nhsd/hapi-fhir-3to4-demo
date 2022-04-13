@@ -46,7 +46,7 @@ def call_validator_cli(input_file):
                 "-to-version",
                 "4.0",
                 "-output",
-                "/tmp/expected-" + base_input_file_name
+                "./expected-" + base_input_file_name
         ], 
         check=True,
         stderr=subprocess.PIPE
@@ -65,7 +65,7 @@ def sort_json_files(input_file):
     # Get just the filename of the input file
     base_input_file_name = os.path.basename(input_file)
 
-    transformed_json = json.load(open('/tmp/expected-' + base_input_file_name))
+    transformed_json = json.load(open('./expected-' + base_input_file_name))
     expected_json = json.load(open(input_file.replace('/input/', '/expected/')))
 
     transformed = json.dumps(transformed_json, sort_keys=True)

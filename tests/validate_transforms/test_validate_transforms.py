@@ -4,7 +4,7 @@ import filecmp
 from .lib import common
 
 EXAMPLES_PATH = os.path.dirname(os.path.realpath(__file__)) + '/../../examples/input/'
-TRANSFORMED_PATH = '/tmp/expected-'
+TRANSFORMED_PATH = './expected-'
 
 json_examples = common.get_input_files(EXAMPLES_PATH, '.json')
 xml_examples = common.get_input_files(EXAMPLES_PATH, '.xml')
