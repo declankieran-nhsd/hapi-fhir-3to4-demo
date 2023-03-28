@@ -25,7 +25,7 @@
   </recipient>
   <extension url="http://hl7.org/fhir/3.0/StructureDefinition/extension-Communication.topic">
     <valueReference>
-    <!--   reference value="#claim"/   -->
+      <!--   reference value="#claim"/   -->
       <identifier>
         <system value="http://happyvalley.com/claim"/>
         <value value="12345"/>
@@ -34,7 +34,7 @@
   </extension>
   <extension url="http://hl7.org/fhir/3.0/StructureDefinition/extension-Communication.topic">
     <valueReference>
-    <!--   reference value="#claimresponse"/   -->
+      <!--   reference value="#claimresponse"/   -->
       <identifier>
         <system value="http://www.BenefitsInc.com/fhir/claimresponse"/>
         <value value="R3500"/>
