@@ -37,4 +37,4 @@ jobs:
           tar -zxf packages/hl7.fhir.xver.r4#1.2.0-mod/package.tgz --directory ~/.fhir/packages/hl7.fhir.xver.r4#1.2.0
 
       - name: Run tests
-        run: py.test -vv
+        run: py.test -vv tests/validate_transforms/test_validate_transforms_xml.py
